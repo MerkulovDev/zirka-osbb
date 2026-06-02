@@ -7,157 +7,453 @@
 <meta name="description" content="ОСББ «Зірка Вишгорода» (вул. Шолуденка, 18А, м. Вишгород): інформація та документи для співвласників.">
 <style>
   :root{
-    --bg:#f6f2ea; --card:#fffdf9; --line:#e8e0d2; --ink:#2c2722; --muted:#7c7264;
-    --accent:#2f7d6b; --accent-d:#256155; --radius:16px;
+    --bg:#f7f0e4; --bg-2:#f1e7d6; --surface:#fffdf8;
+    --ink:#33291c; --muted:#8a7b66; --line:#e9dcc4;
+    --brand:#c2663c; --brand-2:#e0934f; --ring:rgba(194,102,60,.28);
+    --r:16px; --r-lg:22px;
+    --sh-sm:0 1px 2px rgba(90,60,25,.07);
+    --sh-md:0 12px 32px rgba(90,60,25,.10);
+    --sh-lg:0 24px 60px rgba(90,60,25,.16);
+    --font:'Inter','SF Pro Display',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-       background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px;-webkit-text-size-adjust:100%}
-  a{color:var(--accent)}
-  .wrap{max-width:820px;margin:0 auto;padding:0 16px 64px}
-  .hero{position:relative;overflow:hidden;min-height:380px;color:#fff;text-align:center}
-  .hero-art{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
-  .hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:linear-gradient(180deg,rgba(10,18,33,.5),rgba(10,18,33,.08) 48%,transparent 72%)}
-  .hero .inner{position:relative;z-index:2;max-width:820px;margin:0 auto;padding:48px 18px 0}
-  .hero h1{font-size:33px;line-height:1.2;margin:0 0 12px;letter-spacing:.01em;text-shadow:0 2px 16px rgba(0,0,0,.5)}
-  .hero p{font-size:16.5px;margin:0 auto;max-width:560px;text-shadow:0 1px 10px rgba(0,0,0,.45)}
-  section{margin-top:24px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 20px;
-    box-shadow:0 1px 2px rgba(60,45,25,.04)}
-  h2{font-size:21px;margin:0 0 6px}
-  .lead{color:var(--muted);margin:0 0 16px;font-size:14.5px}
-  .docrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-    border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:#fafbfc}
-  .docrow .ico{font-size:26px}
-  .docrow .meta{flex:1 1 200px}
-  .docrow .meta b{display:block}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font);background:var(--bg);color:var(--ink);
+    line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+  a{color:var(--brand);text-underline-offset:2px}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;color:#fff;text-align:center;background:#5e3f73;
+    min-height:clamp(500px,74vh,680px);padding:clamp(52px,8vw,88px) 20px 0;display:flex;justify-content:center}
+  .hero::before{content:"";position:absolute;left:0;right:0;top:0;height:230px;z-index:2;pointer-events:none;
+    background:linear-gradient(180deg,rgba(45,22,55,.5),transparent)}
+  .hero-art{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+  .hero-inner{position:relative;z-index:3;max-width:780px;margin:0 auto}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:7px 16px;
+    font-size:13.5px;font-weight:600;letter-spacing:.01em;margin-bottom:24px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .hero h1{font-size:clamp(33px,6.4vw,54px);line-height:1.04;letter-spacing:-.025em;font-weight:800;margin:0 0 18px}
+  .hero-sub{font-size:clamp(16px,2.3vw,19px);line-height:1.6;color:#fff;max-width:600px;margin:0 auto;
+    text-shadow:0 2px 14px rgba(60,20,40,.55),0 1px 3px rgba(60,20,40,.4)}
+
+  /* ---------- layout ---------- */
+  .content{position:relative;z-index:3;max-width:780px;margin:-64px auto 0;padding:0 18px 56px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:30px 28px;box-shadow:var(--sh-md);margin-bottom:20px}
+  .card h2{font-size:22px;letter-spacing:-.01em;margin:0 0 6px}
+  .lead{color:var(--muted);margin:0 0 20px;font-size:15px}
+
+  .docrow{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;
+    background:linear-gradient(180deg,#fffaf1,#f7efe0)}
+  .docrow .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+    background:linear-gradient(135deg,#fbeede,#f6e6cd);font-size:24px;flex:none}
+  .docrow .meta{flex:1 1 180px}
+  .docrow .meta b{display:block;font-size:15px}
   .docrow .meta span{color:var(--muted);font-size:13px}
-  .btn-dl{background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:14.5px;
-    padding:11px 16px;border-radius:10px;white-space:nowrap}
-  details{border:1px solid var(--line);border-radius:10px;margin-top:12px;background:#fff;overflow:hidden}
-  details>summary{cursor:pointer;padding:13px 16px;font-weight:600;list-style:none;user-select:none}
-  details>summary::-webkit-details-marker{display:none}
-  details>summary::before{content:"▸ ";color:var(--accent)}
-  details[open]>summary::before{content:"▾ "}
-  .st-body{padding:4px 18px 16px;max-height:60vh;overflow:auto;border-top:1px solid var(--line)}
-  .st-body p{margin:7px 0;font-size:14px;text-align:justify}
-  .st-h{font-size:15px;margin:16px 0 4px;color:var(--accent-d)}
-  .faq details{margin-top:10px}
-  .faq .answer{padding:2px 16px 14px;color:#33414f;font-size:14.5px}
-  .draft{background:#fff7e6;border:1px solid #ffe1a8;color:#8a5a00;border-radius:10px;
-    padding:10px 14px;font-size:13.5px;margin-bottom:12px}
-  footer{margin-top:36px;text-align:center;color:var(--muted);font-size:13px}
+  .btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:12px;
+    padding:13px 20px;font-weight:650;font-size:14.5px;cursor:pointer;text-decoration:none;
+    font-family:inherit;transition:transform .12s ease,box-shadow .12s ease,filter .12s ease;white-space:nowrap}
+  .btn-primary{background:linear-gradient(135deg,#d9774a,#c2663c);color:#fff;box-shadow:0 8px 20px rgba(194,102,60,.34)}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(194,102,60,.42)}
+  .btn-primary:active{transform:translateY(0)}
+
+  /* ---------- announcement ---------- */
+  .event-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:26px}
+  .event-facts>div{background:linear-gradient(180deg,#fdf3e3,#f9ecd6);border:1px solid #efdcbf;
+    border-radius:14px;padding:14px 16px}
+  .ef-ico{font-size:20px;line-height:1;margin-bottom:7px}
+  .event-facts b{display:block;font-size:15.5px;color:var(--ink);letter-spacing:-.01em}
+  .event-facts small{color:var(--muted);font-size:12px}
+  .announce-body{color:#334155;font-size:15.5px;line-height:1.7}
+  .announce-body p{margin:0 0 13px}
+  .announce-when{font-weight:800;font-size:19px;color:var(--brand);letter-spacing:-.01em}
+  .announce-h{font-size:16px;color:var(--ink);margin:22px 0 8px;font-weight:750}
+  .agenda{list-style:none;margin:6px 0 18px;padding:0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .agenda li{padding:12px 16px;font-size:14.5px;color:#334155;border-bottom:1px solid var(--line);background:#fff}
+  .agenda li:nth-child(even){background:#faf3e6}
+  .agenda li:last-child{border-bottom:none}
+  .announce-note{background:#fff8ed;border:1px solid #fbe6c4;border-radius:14px;padding:16px 18px;margin:16px 0;
+    font-size:13.5px;line-height:1.65;color:#5b4a33}
+  .announce-note p{margin:0 0 10px}
+  .announce-note p:last-child{margin-bottom:0}
+  .announce-sign{margin-top:18px;color:var(--muted);font-size:14px}
+
+  footer.site-footer{padding:30px 18px 48px;text-align:center;color:var(--muted);font-size:13px;line-height:1.7}
 </style>
 </head>
 <body>
 
-<div class="hero">
-  <svg class="hero-art" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<header class="hero">
+  <svg class="hero-art" viewBox="0 0 1200 660" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
       <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#15233c"/>
-        <stop offset="0.42" stop-color="#34568a"/>
-        <stop offset="0.74" stop-color="#a9b9d3"/>
-        <stop offset="1" stop-color="#ffd8a6"/>
+        <stop offset="0" stop-color="#553770"/>
+        <stop offset="0.30" stop-color="#8f4a6f"/>
+        <stop offset="0.55" stop-color="#cf6450"/>
+        <stop offset="0.78" stop-color="#ef9156"/>
+        <stop offset="1" stop-color="#ffd183"/>
       </linearGradient>
-      <linearGradient id="bld" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#3c5a7c"/>
-        <stop offset="1" stop-color="#2a4360"/>
-      </linearGradient>
-      <radialGradient id="moon" cx="0.5" cy="0.5" r="0.5">
-        <stop offset="0" stop-color="#fff7e6"/>
-        <stop offset="1" stop-color="#ffe9bf"/>
+      <radialGradient id="sunhalo" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0" stop-color="#ffe9b8" stop-opacity="0.95"/>
+        <stop offset="0.4" stop-color="#ffcf86" stop-opacity="0.45"/>
+        <stop offset="1" stop-color="#ffcf86" stop-opacity="0"/>
       </radialGradient>
+      <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/></filter>
     </defs>
-    <rect width="1200" height="520" fill="url(#sky)"/>
-    <!-- moon glow + moon -->
-    <circle cx="985" cy="118" r="84" fill="#fff3da" opacity="0.12"/>
-    <circle cx="985" cy="118" r="48" fill="url(#moon)"/>
-    <!-- stars (Зірка) -->
-    <g fill="#fff8e7">
-      <path d="M150 92 L156 110 L174 116 L156 122 L150 140 L144 122 L126 116 L144 110 Z" opacity="0.92"/>
-      <path d="M300 150 L304 162 L316 166 L304 170 L300 182 L296 170 L284 166 L296 162 Z" opacity="0.8"/>
-      <path d="M760 78 L763 88 L773 91 L763 94 L760 104 L757 94 L747 91 L757 88 Z" opacity="0.7"/>
-      <circle cx="220" cy="170" r="2.4" opacity=".7"/>
-      <circle cx="430" cy="96" r="2" opacity=".6"/>
-      <circle cx="560" cy="150" r="1.8" opacity=".5"/>
-      <circle cx="640" cy="64" r="2.2" opacity=".7"/>
-      <circle cx="880" cy="200" r="2" opacity=".55"/>
-      <circle cx="1080" cy="150" r="2.4" opacity=".7"/>
+
+    <rect width="1200" height="660" fill="url(#sky)"/>
+
+    <!-- sun + halo -->
+    <circle cx="858" cy="206" r="170" fill="url(#sunhalo)"/>
+    <circle cx="858" cy="206" r="60" fill="#ffe9bb"/>
+
+    <!-- sparkles (Зірка) + birds -->
+    <g fill="#fff3da">
+      <path d="M232 96 L240 124 L268 132 L240 140 L232 168 L224 140 L196 132 L224 124 Z" opacity="0.85"/>
+      <path d="M150 200 L155 216 L171 221 L155 226 L150 242 L145 226 L129 221 L145 216 Z" opacity="0.6"/>
+      <circle cx="430" cy="120" r="2.6" opacity="0.7"/>
+      <circle cx="320" cy="250" r="2.2" opacity="0.5"/>
     </g>
-    <!-- hills -->
-    <path d="M0 432 Q300 384 600 420 T1200 408 V520 H0 Z" fill="#3f6f63"/>
-    <path d="M0 474 Q360 432 730 468 T1200 458 V520 H0 Z" fill="#2f5a4f"/>
-    <!-- left tree -->
-    <g>
-      <rect x="332" y="408" width="14" height="64" rx="4" fill="#5b3a29"/>
-      <circle cx="339" cy="392" r="40" fill="#356b54"/>
-      <circle cx="312" cy="410" r="28" fill="#2f5f4a"/>
-      <circle cx="366" cy="412" r="30" fill="#2f5f4a"/>
+    <g fill="none" stroke="#3a2238" stroke-width="3" stroke-linecap="round" opacity="0.55">
+      <path d="M300 168 q10 -10 20 0 q10 -10 20 0"/>
+      <path d="M360 150 q8 -8 16 0 q8 -8 16 0"/>
     </g>
-    <!-- right tree -->
-    <g>
-      <rect x="858" y="420" width="13" height="58" rx="4" fill="#5b3a29"/>
-      <circle cx="864" cy="406" r="34" fill="#356b54"/>
-      <circle cx="888" cy="420" r="24" fill="#2f5f4a"/>
+
+    <!-- soft clouds -->
+    <g fill="#ffe2b4" opacity="0.32">
+      <ellipse cx="250" cy="150" rx="120" ry="22"/>
+      <ellipse cx="1010" cy="120" rx="140" ry="24"/>
+      <ellipse cx="640" cy="95" rx="90" ry="18"/>
     </g>
-    <!-- building -->
+
+    <!-- far ridge -->
+    <path d="M0,300 C200,252 380,300 560,262 C760,220 960,290 1200,256 L1200,660 L0,660 Z" fill="#e0a279" opacity="0.92"/>
+    <!-- mid ridge -->
+    <path d="M0,366 C190,322 380,382 560,346 C770,306 990,378 1200,340 L1200,660 L0,660 Z" fill="#c87a62"/>
+    <!-- near ridge -->
+    <path d="M0,440 C230,398 430,460 650,426 C870,394 1050,456 1200,430 L1200,660 L0,660 Z" fill="#9a5658"/>
+
+    <!-- pines left -->
+    <g fill="#4a2b40">
+      <path d="M250,452 l18,-54 l18,54 Z"/><path d="M256,430 l12,-40 l12,40 Z"/>
+      <path d="M300,460 l14,-44 l14,44 Z"/>
+    </g>
+    <!-- pines right -->
+    <g fill="#4a2b40">
+      <path d="M920,452 l16,-50 l16,50 Z"/><path d="M965,460 l13,-42 l13,42 Z"/>
+      <path d="M998,452 l16,-50 l16,50 Z"/>
+    </g>
+
+    <!-- building (наш будинок) -->
     <g>
-      <rect x="468" y="244" width="266" height="232" rx="7" fill="url(#bld)"/>
-      <rect x="468" y="244" width="266" height="16" rx="7" fill="#243d56"/>
-      <!-- windows: warm-lit + a few dark -->
-      <g>
-        <rect x="500" y="280" width="40" height="32" rx="3" fill="#ffcf7a"/>
-        <rect x="560" y="280" width="40" height="32" rx="3" fill="#ffcf7a"/>
-        <rect x="620" y="280" width="40" height="32" rx="3" fill="#26405a"/>
-        <rect x="680" y="280" width="22" height="32" rx="3" fill="#ffcf7a"/>
-        <rect x="500" y="330" width="40" height="32" rx="3" fill="#26405a"/>
-        <rect x="560" y="330" width="40" height="32" rx="3" fill="#ffcf7a"/>
-        <rect x="620" y="330" width="40" height="32" rx="3" fill="#ffcf7a"/>
-        <rect x="680" y="330" width="22" height="32" rx="3" fill="#26405a"/>
-        <rect x="500" y="380" width="40" height="32" rx="3" fill="#ffcf7a"/>
-        <rect x="560" y="380" width="40" height="32" rx="3" fill="#26405a"/>
-        <rect x="620" y="380" width="40" height="32" rx="3" fill="#ffcf7a"/>
-        <rect x="680" y="380" width="22" height="32" rx="3" fill="#ffcf7a"/>
+      <rect x="528" y="300" width="150" height="152" rx="6" fill="#5d3a4c"/>
+      <rect x="528" y="300" width="150" height="14" rx="6" fill="#46293c"/>
+      <g fill="#ffce85">
+        <rect x="548" y="330" width="24" height="20" rx="2"/>
+        <rect x="592" y="330" width="24" height="20" rx="2"/>
+        <rect x="636" y="330" width="24" height="20" rx="2"/>
+        <rect x="548" y="366" width="24" height="20" rx="2"/>
+        <rect x="636" y="366" width="24" height="20" rx="2"/>
+        <rect x="592" y="402" width="24" height="20" rx="2"/>
       </g>
-      <!-- door -->
-      <rect x="576" y="428" width="50" height="48" rx="4" fill="#ffb454"/>
-      <circle cx="616" cy="452" r="2.6" fill="#5b3a16"/>
+      <g fill="#3a2236">
+        <rect x="592" y="366" width="24" height="20" rx="2"/>
+        <rect x="548" y="402" width="24" height="20" rx="2"/>
+        <rect x="636" y="402" width="24" height="20" rx="2"/>
+      </g>
+      <rect x="590" y="424" width="30" height="28" rx="3" fill="#ffb454"/>
     </g>
+
+    <!-- cream foreground waves (перехід у контент) -->
+    <path d="M0,508 C230,466 440,524 680,494 C900,466 1050,516 1200,498 L1200,660 L0,660 Z" fill="#efe3cd"/>
+    <path d="M0,566 C250,528 470,580 710,552 C930,526 1070,568 1200,558 L1200,660 L0,660 Z" fill="#f7f0e4"/>
+
+    <!-- grain texture -->
+    <rect width="1200" height="660" filter="url(#grain)" opacity="0.05" style="mix-blend-mode:overlay"/>
   </svg>
-  <div class="inner">
-    <h1>ОСББ «Зірка Вишгорода»</h1>
-    <p>Об'єднання співвласників багатоквартирного будинку №18А по вул. Шолуденка, м. Вишгород. Інформація та документи для співвласників.</p>
+  <div class="hero-inner">
+    <span class="pill">★ Установчі збори · 13 червня 2026</span>
+    <h1>Установчі збори зі створення ОСББ</h1>
+    <p class="hero-sub">Багатоквартирний будинок №18А, вул. Шолуденка, м. Вишгород. Запрошуємо всіх співвласників узяти участь.</p>
   </div>
-</div>
+</header>
 
-<div class="wrap">
+<main class="content">
 
-  <section>
-    <div class="card">
-      <h2>Статут ОСББ</h2>
-      <p class="lead">Статут об'єднання співвласників — основний документ, що регулює діяльність ОСББ.</p>
-      <div class="docrow">
-        <div class="ico">📄</div>
-        <div class="meta"><b>Статут ОСББ «Зірка Вишгорода», 2026</b><span>PDF · для друку та ознайомлення</span></div>
-        <a class="btn-dl" href="statut.pdf" download>Завантажити PDF</a>
+  <section class="card announce">
+    <div class="event-facts">
+      <div><div class="ef-ico">📅</div><b>13 червня 2026</b><small>дата зборів</small></div>
+      <div><div class="ef-ico">🕙</div><b>10:00</b><small>реєстрація з 09:45</small></div>
+      <div><div class="ef-ico">📍</div><b>вул. Шолуденко 17А</b><small>конференц-зал «Вишеград», м. Вишгород</small></div>
+    </div>
+
+    <h2>Повідомлення про проведення установчих зборів</h2>
+    <div class="announce-body">
+      <p>Повідомляємо Вам про те, що</p>
+      <p class="announce-when">«13» червня 2026 року о 10:00</p>
+      <p>за адресою: м.Вишгород, вул.Шолуденко 17А, конференц-зал "Вишеград"відбудуться установчі збори зі створення ОСББ у багатоквартирному будинку вул.Шолуденко No 18А</p>
+      <p>Збори проводяться з ініціативи членів ініціативної групи: Меркулов Максим Михайлович, кв. 12; Терехова Людмила Валеріївна, кв. 67; Гомон Олексій Миколайович, кв. 134.</p>
+      <p>Повідомляємо про відсутність технічної можливості участі співвласників в установчих зборах дистанційно, у форматі відеоконференції.</p>
+
+      <h3 class="announce-h">Порядок денний установчих зборів:</h3>
+      <ul class="agenda">
+        <li>1. Про створення Об'єднання співвласників багатоквартирного будинку, затвердження його назви</li>
+        <li>2. Про затвердження Статуту ОСББ</li>
+        <li>3. Про обрання голови правління та членів правління ОСББ</li>
+        <li>4. Про обрання ревізора ОСББ</li>
+        <li>5. Про надання повноважень представнику установчих зборів щодо державної реєстрації ОСББ</li>
+        <li>6. Про прийняття будинку в управління, здійснення управління шляхом самозабезпечення, затвердження внесків, затвердження кошторису</li>
+        <li>7. Про затвердження порядку пропорційного збільшення щомісячних внесків та статей кошторису ОСББ</li>
+        <li>8. Про обрання моделі договірних відносин з виконавцями комунальної послуги</li>
+        <li>9. Про встановлення разового внеску на статутну діяльність об'єднання</li>
+        <li>10. Про надання голові правління права укладати договори оренди, договори про встановлення поштоматів тощо</li>
+        <li>11. Про надання права правлінню реалізовувати права об'єднання</li>
+        <li>12. Про надання дозволу на використання приміщення для роботи правління ОСББ та залучених спеціалістів</li>
+        <li>13. Про надання права тимчасово обмежувати користування спільним майном у разі наявності заборгованості</li>
+        <li>14. Про надання права щодо організації відеоспостереження у будинку</li>
+        <li>15. Щодо отримання права постійного користування на земельну ділянку, на якій розташований багатоквартирний будинок</li>
+        <li>16. Про запровадження системи контролю доступу</li>
+        <li>17. Встановлення обов'язку демонтувати двері, решітки або інші конструкції що обмежують доступ до спільного майна</li>
+        <li>18. Про встановлення сонячної електростанції</li>
+        <li>19. Про обрання способу повідомлення про ухвалені рішення</li>
+      </ul>
+
+      <p>З редакцією статуту, кошторису, а також з текстом питань порядку денного ви можете ознайомитися за наведеним <a href="statut.pdf">посиланням</a> або у членів ініціативної групи:</p>
+
+      <div class="announce-note">
+        <p>Початок реєстрації -09:45</p>
+        <p>Реєстрація співвласників проводитьсяна підставі паспорту</p>
+        <p>Власники, які придбали нерухомість протягом останніх трьох місяців, повинні мати при собі копію правовстановлюючого документа. Довірені особи повинні мати документи, що підтверджують їхні повноваження. Копії таких документів необхідно надати для долучення до протоколу. У разі зміни прізвища слід надати відповідний документ (свідоцтво про шлюб, розірвання шлюбу тощо). У разі голосування батьків від імені неповнолітніх власників необхідно надати копію свідоцтва про народження дитини. Власники приміщень - юридичні особи, якщо голосує керівник, повинні мати із собою печатку, а у разі голосування за довіреністю необхідно надати оригінал довіреності, оформленої зокрема у простій письмовій формі, яка долучається до листа голосування.</p>
+        <p>Для організаційної допомоги, надання консультацій з питань процедури проведення зборів, запрошений адвокат Юрій Кобзаренко.</p>
       </div>
+
+      <p class="announce-sign">З повагою<br>Член ініціативної групи будинку 28 травня 2026 року<br>Терехова Людмила Валеріївна</p>
     </div>
   </section>
 
-  <section class="faq">
-    <div class="card">
-      <h2>Питання та відповіді</h2>
-      <p class="lead" style="margin-bottom:0">Розділ незабаром — тут зʼявляться відповіді на поширені запитання співвласників.</p>
+  <section class="card">
+    <h2>Статут ОСББ</h2>
+    <p class="lead">Основний документ, що регулює діяльність об'єднання співвласників.</p>
+    <div class="docrow">
+      <div class="ico">📄</div>
+      <div class="meta"><b>Статут ОСББ «Зірка Вишгорода», 2026</b><span>PDF · для друку та ознайомлення</span></div>
+      <a class="btn btn-primary" href="statut.pdf" download>Завантажити PDF</a>
     </div>
   </section>
 
-  <footer>
-    ОСББ «Зірка Вишгорода» · м. Вишгород, вул. Шолуденка, 18А<br>
-    Документи формуються локально у вашому браузері.
-  </footer>
+</main>
 
-</div>
+<!-- ========== FAQ SECTION ========== -->
+<section class="faq-section">
+  <div class="faq-container">
+
+    <div class="faq-header">
+      <h2 class="faq-title">Питання і відповіді</h2>
+      <p class="faq-subtitle">Усе, що варто знати про ОСББ нашого будинку — простою мовою</p>
+    </div>
+
+    <!-- ГРУПА 1: ТАРИФ І ГРОШІ -->
+    <div class="faq-group">
+      <h3 class="faq-group-title">Тариф і гроші</h3>
+
+      <details class="faq-item">
+        <summary class="faq-question">Чи може правління підвищити внесок самостійно?</summary>
+        <div class="faq-answer">
+          <p>Ні. Розмір внеску встановлюють лише самі співвласники — на загальних зборах, голосуванням. Правління не має такого права.</p>
+          <p>Те, що правління може робити самостійно — це поточні витрати в межах кошторису, який щороку затверджують ті ж збори.</p>
+          <details class="legal-details">
+            <summary>📖 Підтвердження в документах</summary>
+            <div class="legal-content">
+              <p><strong>Статут ОСББ, Розділ III, п. 3</strong> — до виключної компетенції загальних зборів належить «визначення порядку сплати, переліку та розмірів внесків і платежів співвласників».</p>
+              <p><strong>Закон України «Про ОСББ», ст. 10</strong> — порядок сплати та розмір внесків встановлюються виключно загальними зборами співвласників.</p>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">З чого складається внесок?</summary>
+        <div class="faq-answer">
+          <p>Щомісячний платіж для квартир — <strong>15 грн за м²</strong>. Ця сума складається з чотирьох позицій:</p>
+          <ul>
+            <li><strong>10 грн</strong> — основний внесок на утримання будинку (прибирання, обслуговування, технічна підтримка)</li>
+            <li><strong>2 грн</strong> — електроенергія місць загального користування (освітлення під'їздів, ліфти, насоси)</li>
+            <li><strong>1,50 грн</strong> — ремонтний фонд</li>
+            <li><strong>1,50 грн</strong> — резервний фонд</li>
+          </ul>
+          <p>Ремонтний і резервний фонди — це <strong>не «гроші правлінню»</strong>, а ваша подушка безпеки. Кошти обліковуються окремо в кошторисі й витрачаються лише на ремонти спільного майна або непередбачені аварійні ситуації — і тільки за рішенням зборів.</p>
+          <details class="legal-details">
+            <summary>📖 Підтвердження в документах</summary>
+            <div class="legal-content">
+              <p><strong>Листок опитування, питання 6</strong> — затверджуються основний внесок 10 + 2 = 12 грн/м² для квартир, ремонтний фонд 1,50 грн/м², резервний фонд 1,50 грн/м². Разом для квартир: 15 грн/м². Для нежитлових приміщень суми відрізняються.</p>
+              <p><strong>Статут ОСББ, Розділ IV, п. 5</strong> — «Кошти Об'єднання, включаючи кошти ремонтного, резервного та інших фондів, витрачаються правлінням згідно з кошторисами, затвердженими загальними зборами Об'єднання».</p>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Що таке прив'язка до мінімальної зарплати і навіщо вона?</summary>
+        <div class="faq-answer">
+          <p>Це окреме питання в листку опитування. Голосуєте «за» або «проти» — як вважаєте за потрібне.</p>
+          <p>Якщо мешканці підтримають, основна частина внеску буде коригуватись разом зі зростанням мінімальної зарплати. Навіщо це може бути корисно: щоб уникати різких стрибків. Замість великого перегляду раз на кілька років — невеликі рівні зміни.</p>
+          <p>Важливо розуміти: мінімальна зарплата зростає <strong>не щороку</strong> і <strong>в середньому приблизно на 8% на рік</strong>. Тобто прив'язка не означає різких щорічних змін — це поступова, передбачувана індексація.</p>
+          <p>Не підтримають — внесок лишиться без прив'язки. Це повністю ваше рішення.</p>
+          <details class="legal-details">
+            <summary>📖 Підтвердження в документах</summary>
+            <div class="legal-content">
+              <p><strong>Листок опитування, питання 7</strong> — «Про затвердження порядку пропорційного збільшення щомісячних внесків та статей кошторису ОСББ». Це окреме питання з варіантами «за» або «проти».</p>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Що означає «ліміт 15 мінзарплат для голови» і чи це безпечно?</summary>
+        <div class="faq-answer">
+          <p>За Статутом, голова правління може підписувати договори на суму до 15 мінімальних зарплат (близько 120 000 грн) без додаткового погодження. Звучить лякаюче, але насправді ось як це працює.</p>
+          <p><strong>Це не «вільні гроші».</strong> Усі кошти ОСББ витрачаються виключно згідно з кошторисом, який щороку затверджують самі співвласники на загальних зборах. Голова не може «вигадати» нову витрату — він лише оперативно оплачує те, на що мешканці вже дали згоду в кошторисі.</p>
+          <p><strong>Це про швидкість, а не про владу.</strong> Зламався насос, протекла труба, потрібне термінове прибирання — щоразу через нові збори це нереально. Тому збори один раз затверджують річний бюджет, а правління в його межах оперативно діє.</p>
+          <p><strong>У вас є інструменти контролю.</strong> Ви бачите щорічний звіт правління і перевірку ревізора, маєте право запитати деталі по будь-якій витраті. У разі підозр — можете ініціювати перевибори правління чи зміну управителя.</p>
+          <p>Жорстке обмеження ліміту просто паралізує будинок в аварійних ситуаціях. Це не контроль — це блокування роботи.</p>
+          <details class="legal-details">
+            <summary>📖 Підтвердження в документах</summary>
+            <div class="legal-content">
+              <p><strong>Статут ОСББ, Розділ III, п. 16</strong> — голова може підписувати договори без погодження на суму не більше 15 мінімальних зарплат. Без обмеження — лише договори комунальних послуг (вода, тепло, електрика) для безперебійної роботи будинку.</p>
+              <p><strong>Статут ОСББ, Розділ IV, п. 5</strong> — «Кошти Об'єднання витрачаються правлінням згідно з кошторисами, затвердженими загальними зборами».</p>
+              <p><strong>Статут ОСББ, Розділ III, п. 3</strong> — затвердження кошторису і річного звіту, обрання та відкликання членів правління — виключна компетенція загальних зборів.</p>
+              <p><strong>Закон України «Про ОСББ», ст. 18</strong> — діяльність правління контролює ревізор з річним звітом перед зборами.</p>
+            </div>
+          </details>
+        </div>
+      </details>
+    </div>
+
+    <!-- ГРУПА 2: СПІЛЬНЕ МАЙНО ТА ПРАВА -->
+    <div class="faq-group">
+      <h3 class="faq-group-title">Спільне майно та права</h3>
+      <p class="placeholder">— картки в розробці —</p>
+    </div>
+
+    <!-- ГРУПА 3: БОРЖНИКИ -->
+    <div class="faq-group">
+      <h3 class="faq-group-title">Боржники</h3>
+      <p class="placeholder">— картки в розробці —</p>
+    </div>
+
+    <!-- ГРУПА 4: УПРАВЛІННЯ І КОНТРОЛЬ -->
+    <div class="faq-group">
+      <h3 class="faq-group-title">Управління і контроль</h3>
+      <p class="placeholder">— картки в розробці —</p>
+    </div>
+
+    <div class="faq-footer-note">
+      Не знайшли свого питання? Напишіть нам у чат будинку.
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  ОСББ «Зірка Вишгорода» · м. Вишгород, вул. Шолуденка, 18А
+</footer>
+
+<style>
+  .faq-section{background:var(--bg-2);padding:clamp(48px,8vw,76px) 18px;color:var(--ink)}
+  .faq-container{max-width:780px;margin:0 auto}
+  .faq-header{text-align:center;margin-bottom:40px}
+  .faq-title{font-weight:800;letter-spacing:-.02em;color:var(--ink);font-size:clamp(26px,4vw,38px);margin:0 0 10px}
+  .faq-subtitle{color:var(--muted);font-size:16px;margin:0}
+  .faq-group{margin-bottom:34px}
+  .faq-group-title{font-weight:700;color:var(--ink);font-size:15px;letter-spacing:.04em;text-transform:uppercase;
+    margin:0 0 14px;padding-left:12px;border-left:3px solid var(--brand)}
+  .faq-item{background:var(--surface);border:1px solid var(--line);border-radius:16px;margin-bottom:12px;
+    box-shadow:var(--sh-sm);overflow:hidden;transition:box-shadow .2s ease,border-color .2s ease}
+  .faq-item[open]{box-shadow:var(--sh-md);border-color:#ecd6b4}
+  .faq-question{cursor:pointer;padding:18px 52px 18px 22px;font-weight:650;font-size:16px;color:var(--ink);
+    list-style:none;position:relative;user-select:none}
+  .faq-question::-webkit-details-marker{display:none}
+  .faq-question::after{content:'';position:absolute;right:22px;top:50%;width:9px;height:9px;
+    border-right:2px solid var(--brand);border-bottom:2px solid var(--brand);
+    transform:translateY(-75%) rotate(45deg);transition:transform .2s ease}
+  .faq-item[open] .faq-question::after{transform:translateY(-25%) rotate(-135deg)}
+  .faq-answer{padding:0 22px 20px;color:#334155;line-height:1.65;font-size:15px;
+    overflow:hidden;transition:height .36s cubic-bezier(.4,0,.2,1)}
+  .faq-answer p{margin:0 0 12px}
+  .faq-answer ul{margin:0 0 12px;padding-left:20px}
+  .faq-answer li{margin-bottom:6px}
+  .faq-answer strong{color:var(--ink)}
+  .legal-details{margin-top:16px;border-top:1px dashed var(--line);padding-top:12px}
+  .legal-details summary{cursor:pointer;font-size:13px;color:var(--brand);font-weight:650;user-select:none}
+  .legal-details summary::-webkit-details-marker{display:none}
+  .legal-content{margin-top:10px;background:var(--bg-2);border-radius:12px;padding:14px 16px;font-size:13px;color:var(--muted);
+    overflow:hidden;transition:height .32s cubic-bezier(.4,0,.2,1)}
+  .legal-content p{margin:0 0 8px}
+  .legal-content strong{color:var(--ink)}
+  .placeholder{color:#9aa6b6;font-style:italic;text-align:center;padding:22px}
+  .faq-footer-note{text-align:center;margin-top:30px;color:var(--muted);font-size:14px}
+  @media (max-width:600px){
+    .faq-question{padding:16px 46px 16px 18px;font-size:15px}
+    .faq-answer{padding:0 18px 18px;font-size:14px}
+  }
+  /* anti-copy */
+  .faq-section,.faq-section *{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none}
+  .faq-section *{-webkit-tap-highlight-color:transparent}
+  @media print{.faq-section{filter:blur(8px);pointer-events:none}
+    .faq-section::after{content:"Друк цієї секції недоступний";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);filter:none;font-size:24px;font-weight:bold}}
+</style>
+
+<script>
+  (function(){
+    var faqSection=document.querySelector('.faq-section');
+    if(!faqSection) return;
+    faqSection.addEventListener('contextmenu',function(e){e.preventDefault();return false;});
+    ['copy','cut','paste'].forEach(function(ev){faqSection.addEventListener(ev,function(e){e.preventDefault();return false;});});
+    faqSection.addEventListener('dragstart',function(e){e.preventDefault();return false;});
+    document.addEventListener('keydown',function(e){
+      if(e.ctrlKey||e.metaKey){ if(['c','x','a','s','p','u'].indexOf(e.key.toLowerCase())!==-1){e.preventDefault();return false;} }
+      if(e.key==='F12'){e.preventDefault();return false;}
+      if((e.ctrlKey||e.metaKey)&&e.shiftKey){ if(['i','j','c'].indexOf(e.key.toLowerCase())!==-1){e.preventDefault();return false;} }
+    });
+    document.addEventListener('copy',function(e){
+      if(faqSection.contains(document.activeElement)||faqSection.contains(window.getSelection().anchorNode)){
+        e.clipboardData.setData('text/plain','');e.preventDefault();
+      }
+    });
+  })();
+</script>
+
+<script>
+  /* smooth slide-down accordion for <details> (FAQ + legal) */
+  (function(){
+    function enhance(sel, contentSel){
+      document.querySelectorAll(sel).forEach(function(d){
+        var c=d.querySelector(contentSel), s=d.querySelector('summary');
+        if(!c||!s) return;
+        s.addEventListener('click',function(e){
+          e.preventDefault();
+          if(d.dataset.animating) return;
+          d.dataset.animating='1';
+          var done=function(){ c.style.height=''; delete d.dataset.animating; };
+          if(d.open){
+            c.style.height=c.scrollHeight+'px'; c.getBoundingClientRect();
+            c.style.height='0px';
+            c.addEventListener('transitionend',function te(){ d.open=false; done(); c.removeEventListener('transitionend',te); },{once:true});
+          } else {
+            d.open=true;
+            var h=c.scrollHeight; c.style.height='0px'; c.getBoundingClientRect();
+            c.style.height=h+'px';
+            c.addEventListener('transitionend',function te(){ done(); c.removeEventListener('transitionend',te); },{once:true});
+          }
+        });
+      });
+    }
+    enhance('.faq-item','.faq-answer');
+    enhance('.legal-details','.legal-content');
+  })();
+</script>
+
 </body>
 </html>
