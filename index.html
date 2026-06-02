@@ -1,404 +1,1010 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ОСББ «Зірка Вишгорода»</title>
-<meta name="description" content="ОСББ «Зірка Вишгорода» (вул. Шолуденка, 18А, м. Вишгород): установчі збори, порядок денний, статут та відповіді на питання.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ОСББ «Зірка Вишгорода» · Установчі збори</title>
+<meta name="description" content="ОСББ «Зірка Вишгорода» — установчі збори зі створення ОСББ. 13 червня 2026, 10:00, м. Вишгород, вул. Шолуденко 17А, конференц-зал «Вишеград»." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['Manrope', 'system-ui', 'sans-serif'],
+          body: ['Inter', 'system-ui', 'sans-serif'],
+        },
+        colors: {
+          cream:    '#F2F8F1',
+          sand:     '#E8F3E5',
+          mint:     '#DBEFDF',
+          ink:      '#1E2A22',
+          muted:    '#5E6F63',
+          green:    '#3DA66E',
+          greenDeep:'#2C8456',
+          leaf:     '#6CC08A',
+          honey:    '#F4C05B',
+          honeyDeep:'#E0A23C',
+        },
+        borderRadius: { '4xl': '2rem', '5xl': '2.5rem' },
+        boxShadow: {
+          soft: '0 18px 50px -22px rgba(28,64,40,0.20)',
+          lift: '0 28px 70px -28px rgba(28,64,40,0.30)',
+          glow: '0 12px 40px -12px rgba(61,166,110,0.50)',
+        },
+      },
+    },
+  };
+</script>
+
 <style>
-  :root{
-    --bg:#f4f5fb; --surface:#ffffff; --ink:#171a2e; --muted:#6a6f8f; --line:#e7e8f3;
-    --brand:#5b5bf5; --brand-2:#8b5cf6; --ring:rgba(91,91,245,.3);
-    --c-green:#10b981; --c-blue:#3b82f6; --c-amber:#f59e0b; --c-violet:#8b5cf6;
-    --r:16px; --r-lg:24px;
-    --sh-sm:0 1px 2px rgba(20,24,50,.06),0 1px 3px rgba(20,24,50,.05);
-    --sh-md:0 12px 34px rgba(20,24,50,.10);
-    --sh-lg:0 28px 70px rgba(20,24,50,.16);
-    --font:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-    --display:'Unbounded','Manrope',system-ui,sans-serif;
+  html { scroll-behavior: smooth; }
+  body { background:#F2F8F1; }
+
+  .blob { position:absolute; border-radius:9999px; filter:blur(70px); opacity:.5; z-index:0; pointer-events:none; }
+
+  .reveal { opacity:0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity:1; transform:none; }
+  .reveal[data-delay="1"]{ transition-delay:.08s; }
+  .reveal[data-delay="2"]{ transition-delay:.16s; }
+  .reveal[data-delay="3"]{ transition-delay:.24s; }
+  .reveal[data-delay="4"]{ transition-delay:.32s; }
+
+  @keyframes floaty { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-12px); } }
+  .floaty { animation: floaty 7s ease-in-out infinite; }
+  @keyframes floaty2 { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(10px); } }
+  .floaty2 { animation: floaty2 9s ease-in-out infinite; }
+  @keyframes sunpulse { 0%,100%{ opacity:.95; } 50%{ opacity:.65; } }
+  .sunpulse { animation: sunpulse 6s ease-in-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity:1; transform:none; transition:none; }
+    .floaty,.floaty2,.sunpulse { animation:none; }
+    html { scroll-behavior:auto; }
   }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;font-family:var(--font);background:var(--bg);color:var(--ink);
-    line-height:1.62;font-size:16px;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
-  a{color:var(--brand);text-underline-offset:2px}
-  h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.01em}
 
-  /* ---------- hero ---------- */
-  .hero{position:relative;overflow:hidden;color:#fff;text-align:center;
-    min-height:clamp(420px,56vh,560px);padding:clamp(64px,9vw,100px) 20px clamp(104px,12vw,140px);
-    display:flex;align-items:center;justify-content:center;
-    background:
-      radial-gradient(115% 130% at 10% 0%, rgba(124,140,255,.55), transparent 50%),
-      radial-gradient(120% 120% at 95% -8%, rgba(192,120,255,.5), transparent 55%),
-      linear-gradient(150deg,#4338ca 0%,#6d40e0 52%,#9333ea 100%)}
-  .hero-art{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:120px;z-index:1;pointer-events:none}
-  .hero-inner{position:relative;z-index:2;max-width:800px;margin:0 auto}
-  .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);
-    border:1px solid rgba(255,255,255,.32);border-radius:999px;padding:8px 17px;font-weight:600;
-    font-size:13.5px;margin-bottom:24px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-  .hero h1{font-size:clamp(32px,6vw,56px);line-height:1.06;font-weight:800;margin:0 0 18px;letter-spacing:-.02em}
-  .hero-sub{font-family:var(--font);font-size:clamp(16px,2.2vw,19px);line-height:1.6;color:#ece9ff;max-width:600px;margin:0 auto}
+  .glass { background: rgba(242,248,241,.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
 
-  /* ---------- layout & sections ---------- */
-  .content{position:relative;z-index:3;max-width:820px;margin:-72px auto 0;padding:0 18px}
-  .section{margin-bottom:22px}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
-    padding:clamp(22px,4vw,34px) clamp(20px,4vw,32px);box-shadow:var(--sh-md)}
-  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font);font-weight:700;
-    font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);margin:0 0 12px}
-  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
-  h2{font-size:clamp(21px,3.4vw,28px);margin:0 0 8px;color:var(--ink)}
-  .lead{color:var(--muted);margin:0 0 18px;font-size:15px}
-
-  /* event facts */
-  .event-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:14px;margin-bottom:26px}
-  .ef{background:linear-gradient(180deg,#fbfbff,#f3f3fd);border:1px solid var(--line);border-radius:16px;padding:16px}
-  .ef .ic{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;margin-bottom:11px;
-    background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff}
-  .ef .ic svg{width:21px;height:21px}
-  .ef b{display:block;font-family:var(--display);font-weight:600;font-size:15.5px;color:var(--ink)}
-  .ef small{color:var(--muted);font-size:12.5px}
-
-  .ann p{margin:0 0 13px;color:#3a3f5c;font-size:15.5px}
-  .ann .when{font-family:var(--display);font-weight:700;font-size:clamp(18px,3vw,22px);
-    color:transparent;background:linear-gradient(120deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;margin:4px 0 14px}
-
-  /* roadmap (agenda) */
-  .roadmap{margin:6px 0 4px}
-  .rm{position:relative;padding-left:64px;padding-bottom:16px}
-  .rm:last-child{padding-bottom:0}
-  .rm::before{content:"";position:absolute;left:23px;top:8px;bottom:-8px;width:2px;
-    background:linear-gradient(var(--brand),var(--brand-2));opacity:.22}
-  .rm:last-child::before{display:none}
-  .rm-num{position:absolute;left:0;top:0;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
-    font-family:var(--display);font-weight:700;font-size:15px;color:#fff;
-    background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 7px 16px rgba(91,91,245,.3)}
-  .rm-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:13px 16px;
-    font-size:14.5px;line-height:1.5;color:#33384f;box-shadow:var(--sh-sm);transition:transform .14s ease,box-shadow .14s ease}
-  .rm-card:hover{transform:translateX(3px);box-shadow:var(--sh-md)}
-
-  .note{background:#fff8ec;border:1px solid #fbe3b8;border-radius:16px;padding:18px 20px;margin:8px 0 0;
-    font-size:13.5px;line-height:1.62;color:#7a5a1e}
-  .note p{margin:0 0 10px}.note p:last-child{margin:0}
-  .sign{margin-top:18px;color:var(--muted);font-size:14px}
-
-  /* statute doc row */
-  .docrow{display:flex;align-items:center;gap:16px;flex-wrap:wrap;border:1px solid var(--line);
-    border-radius:16px;padding:16px 18px;background:linear-gradient(180deg,#fbfbff,#f3f4fd)}
-  .docrow .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;flex:none;
-    background:linear-gradient(135deg,#eef0ff,#f3edff);color:var(--brand)}
-  .docrow .ic svg{width:24px;height:24px}
-  .docrow .meta{flex:1 1 180px}
-  .docrow .meta b{display:block;font-family:var(--display);font-weight:600;font-size:15px}
-  .docrow .meta span{color:var(--muted);font-size:13px}
-  .btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:13px;padding:13px 21px;
-    font-family:var(--font);font-weight:700;font-size:14.5px;cursor:pointer;text-decoration:none;white-space:nowrap;
-    transition:transform .12s ease,box-shadow .12s ease}
-  .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;box-shadow:0 8px 20px rgba(91,91,245,.34)}
-  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(91,91,245,.44)}
-
-  footer.site-footer{background:#13162a;color:#aeb2d4;text-align:center;padding:34px 18px 40px;margin-top:30px;font-size:13.5px;line-height:1.8}
-  footer.site-footer b{color:#fff;font-family:var(--display);font-weight:600}
+  /* FAQ — native details */
+  .faq-item > summary, .legal > summary { list-style:none; cursor:pointer; }
+  .faq-item > summary::-webkit-details-marker, .legal > summary::-webkit-details-marker { display:none; }
+  .faq-plus { transition: transform .3s ease; }
+  .faq-item[open] .faq-plus { transform: rotate(45deg); }
+  .faq-item[open] { box-shadow: 0 18px 50px -22px rgba(28,64,40,0.20); }
+  .faq-body { animation: faqIn .35s ease; }
+  .faq-body strong { color:#1E2A22; font-weight:600; }
+  @keyframes faqIn { from { opacity:0; transform: translateY(-6px); } to { opacity:1; transform:none; } }
+  .legal-arrow { transition: transform .3s ease; }
+  .legal[open] .legal-arrow { transform: rotate(90deg); }
 </style>
 </head>
-<body>
 
-<header class="hero">
-  <svg class="hero-art" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M0,52 C300,8 520,96 760,72 C960,52 1080,18 1200,40 L1200,120 L0,120 Z" fill="#f4f5fb" opacity="0.55"/>
-    <path d="M0,78 C320,40 560,108 820,84 C1010,66 1110,52 1200,70 L1200,120 L0,120 Z" fill="#f4f5fb"/>
-  </svg>
-  <div class="hero-inner">
-    <span class="pill">★ Установчі збори · 13 червня 2026</span>
-    <h1>ОСББ «Зірка&nbsp;Вишгорода»</h1>
-    <p class="hero-sub">Установчі збори зі створення ОСББ у будинку №18А по вул. Шолуденка, м. Вишгород. Усе найважливіше — на одній сторінці.</p>
-  </div>
+<body class="font-body text-ink antialiased selection:bg-green/20 overflow-x-hidden">
+
+<!-- ============== NAV ============== -->
+<header class="fixed top-0 inset-x-0 z-50">
+  <nav class="glass border-b border-white/50">
+    <div class="mx-auto max-w-6xl px-5 sm:px-8 h-16 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-2.5 font-display font-extrabold text-ink">
+        <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-green to-leaf text-white shadow-glow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </span>
+        <span>Зірка&nbsp;Вишгорода</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium text-muted">
+        <a href="#announce" class="hover:text-ink transition">Оголошення</a>
+        <a href="#roadmap" class="hover:text-ink transition">Порядок денний</a>
+        <a href="#registration" class="hover:text-ink transition">Реєстрація</a>
+        <a href="#faq" class="hover:text-ink transition">Питання</a>
+        <a href="#contacts" class="hover:text-ink transition">Контакти</a>
+      </div>
+
+      <a href="#event" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-green text-white px-5 py-2.5 text-sm font-semibold hover:bg-greenDeep transition shadow-soft">
+        Деталі зборів
+      </a>
+
+      <button id="navToggle" class="md:hidden grid place-items-center w-10 h-10 rounded-xl bg-white/70 text-ink" aria-label="Меню">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/50 px-5 pb-5 pt-2 space-y-1 text-sm font-medium">
+      <a href="#announce" class="block py-2.5 text-muted">Оголошення</a>
+      <a href="#roadmap" class="block py-2.5 text-muted">Порядок денний</a>
+      <a href="#registration" class="block py-2.5 text-muted">Реєстрація</a>
+      <a href="#faq" class="block py-2.5 text-muted">Питання</a>
+      <a href="#contacts" class="block py-2.5 text-muted">Контакти</a>
+      <a href="#event" class="block mt-2 text-center rounded-full bg-green text-white py-3 font-semibold">Деталі зборів</a>
+    </div>
+  </nav>
 </header>
 
-<main class="content">
+<main>
 
-  <!-- ====== ОГОЛОШЕННЯ ====== -->
-  <section class="section">
-    <div class="card ann">
-      <p class="eyebrow"><span class="dot"></span>Оголошення</p>
+<!-- ============== 1. HERO ============== -->
+<section id="hero" class="relative pt-28 sm:pt-32 pb-16 sm:pb-24 overflow-hidden">
+  <div class="blob w-[520px] h-[520px] -top-32 -left-24 bg-leaf/40"></div>
+  <div class="blob w-[460px] h-[460px] top-24 -right-28 bg-honey/30"></div>
 
-      <div class="event-facts">
-        <div class="ef">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg></div>
-          <b>13 червня 2026</b><small>дата зборів</small>
-        </div>
-        <div class="ef">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div>
-          <b>10:00</b><small>реєстрація з 09:45</small>
-        </div>
-        <div class="ef">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
-          <b>вул. Шолуденко 17А</b><small>конференц-зал «Вишеград», м. Вишгород</small>
+  <div class="relative z-10 mx-auto max-w-6xl px-5 sm:px-8 grid lg:grid-cols-[1.05fr_.95fr] gap-12 lg:gap-8 items-center">
+    <!-- copy -->
+    <div>
+      <span class="reveal inline-flex items-center gap-2 rounded-full bg-white/70 border border-white px-4 py-1.5 text-sm font-semibold text-greenDeep shadow-soft">
+        <span class="w-2 h-2 rounded-full bg-green animate-pulse"></span>
+        Установчі збори · 13 червня 2026
+      </span>
+
+      <h1 class="reveal mt-6 font-display font-extrabold tracking-tight text-ink text-4xl sm:text-5xl lg:text-6xl leading-[1.05]">
+        Створюємо ОСББ<br class="hidden sm:block" /> нашого будинку
+      </h1>
+
+      <p class="reveal mt-6 text-lg text-muted max-w-xl leading-relaxed" data-delay="1">
+        Настав час разом узяти будинок під власний контроль. На установчих зборах ми заснуємо
+        об'єднання співвласників — щоб гроші, рішення та розвиток нашого дому належали нам, мешканцям.
+      </p>
+
+      <!-- event card -->
+      <div id="event" class="reveal mt-8 rounded-4xl bg-white/85 border border-white shadow-soft p-2 max-w-xl scroll-mt-24" data-delay="2">
+        <div class="rounded-[1.4rem] bg-gradient-to-br from-cream to-mint p-5 sm:p-6 grid sm:grid-cols-[auto_1fr] gap-5 sm:gap-7 items-center">
+          <!-- date + time stacked -->
+          <div class="flex flex-col gap-4 sm:pr-7 sm:border-r border-ink/10">
+            <div class="flex items-center gap-3">
+              <span class="grid place-items-center w-11 h-11 rounded-2xl bg-green/12 text-greenDeep shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+              </span>
+              <div>
+                <div class="text-xs uppercase tracking-wide text-muted">Дата</div>
+                <div class="font-display font-bold whitespace-nowrap">13 червня</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="grid place-items-center w-11 h-11 rounded-2xl bg-honey/25 text-honeyDeep shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              </span>
+              <div>
+                <div class="text-xs uppercase tracking-wide text-muted">Початок</div>
+                <div class="font-display font-bold whitespace-nowrap">10:00</div>
+              </div>
+            </div>
+          </div>
+          <!-- place wide -->
+          <div class="flex items-start gap-3">
+            <span class="grid place-items-center w-11 h-11 rounded-2xl bg-leaf/20 text-greenDeep shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <div>
+              <div class="text-xs uppercase tracking-wide text-muted">Місце</div>
+              <div class="font-display font-bold text-lg leading-snug">Конференц-зал «Вишеград»</div>
+              <div class="text-muted">вул. Шолуденко 17А, м. Вишгород</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <h2>Повідомлення про проведення установчих зборів</h2>
-      <p>Повідомляємо Вам про те, що</p>
-      <p class="when">«13» червня 2026 року о 10:00</p>
-      <p>за адресою: м.Вишгород, вул.Шолуденко 17А, конференц-зал "Вишеград"відбудуться установчі збори зі створення ОСББ у багатоквартирному будинку вул.Шолуденко No 18А</p>
-      <p>Збори проводяться з ініціативи членів ініціативної групи: Меркулов Максим Михайлович, кв. 12; Терехова Людмила Валеріївна, кв. 67; Гомон Олексій Миколайович, кв. 134.</p>
-      <p>Повідомляємо про відсутність технічної можливості участі співвласників в установчих зборах дистанційно, у форматі відеоконференції.</p>
-    </div>
-  </section>
-
-  <!-- ====== ПОРЯДОК ДЕННИЙ (роадмап) ====== -->
-  <section class="section">
-    <div class="card">
-      <p class="eyebrow"><span class="dot"></span>Порядок денний</p>
-      <h2>Порядок денний установчих зборів</h2>
-      <p class="lead">19 питань, які винесені на голосування співвласників.</p>
-      <div class="roadmap">
-        <div class="rm"><div class="rm-num">1</div><div class="rm-card">Про створення Об'єднання співвласників багатоквартирного будинку, затвердження його назви</div></div>
-        <div class="rm"><div class="rm-num">2</div><div class="rm-card">Про затвердження Статуту ОСББ</div></div>
-        <div class="rm"><div class="rm-num">3</div><div class="rm-card">Про обрання голови правління та членів правління ОСББ</div></div>
-        <div class="rm"><div class="rm-num">4</div><div class="rm-card">Про обрання ревізора ОСББ</div></div>
-        <div class="rm"><div class="rm-num">5</div><div class="rm-card">Про надання повноважень представнику установчих зборів щодо державної реєстрації ОСББ</div></div>
-        <div class="rm"><div class="rm-num">6</div><div class="rm-card">Про прийняття будинку в управління, здійснення управління шляхом самозабезпечення, затвердження внесків, затвердження кошторису</div></div>
-        <div class="rm"><div class="rm-num">7</div><div class="rm-card">Про затвердження порядку пропорційного збільшення щомісячних внесків та статей кошторису ОСББ</div></div>
-        <div class="rm"><div class="rm-num">8</div><div class="rm-card">Про обрання моделі договірних відносин з виконавцями комунальної послуги</div></div>
-        <div class="rm"><div class="rm-num">9</div><div class="rm-card">Про встановлення разового внеску на статутну діяльність об'єднання</div></div>
-        <div class="rm"><div class="rm-num">10</div><div class="rm-card">Про надання голові правління права укладати договори оренди, договори про встановлення поштоматів тощо</div></div>
-        <div class="rm"><div class="rm-num">11</div><div class="rm-card">Про надання права правлінню реалізовувати права об'єднання</div></div>
-        <div class="rm"><div class="rm-num">12</div><div class="rm-card">Про надання дозволу на використання приміщення для роботи правління ОСББ та залучених спеціалістів</div></div>
-        <div class="rm"><div class="rm-num">13</div><div class="rm-card">Про надання права тимчасово обмежувати користування спільним майном у разі наявності заборгованості</div></div>
-        <div class="rm"><div class="rm-num">14</div><div class="rm-card">Про надання права щодо організації відеоспостереження у будинку</div></div>
-        <div class="rm"><div class="rm-num">15</div><div class="rm-card">Щодо отримання права постійного користування на земельну ділянку, на якій розташований багатоквартирний будинок</div></div>
-        <div class="rm"><div class="rm-num">16</div><div class="rm-card">Про запровадження системи контролю доступу</div></div>
-        <div class="rm"><div class="rm-num">17</div><div class="rm-card">Встановлення обов'язку демонтувати двері, решітки або інші конструкції що обмежують доступ до спільного майна</div></div>
-        <div class="rm"><div class="rm-num">18</div><div class="rm-card">Про встановлення сонячної електростанції</div></div>
-        <div class="rm"><div class="rm-num">19</div><div class="rm-card">Про обрання способу повідомлення про ухвалені рішення</div></div>
+      <!-- CTAs -->
+      <div class="reveal mt-7 flex flex-wrap gap-3" data-delay="3">
+        <a href="#roadmap" class="inline-flex items-center gap-2 rounded-full bg-green text-white px-6 py-3.5 font-semibold shadow-glow hover:bg-greenDeep transition">
+          Порядок денний
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#faq" class="inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 font-semibold border border-ink/10 hover:border-ink/25 transition shadow-soft">
+          Поширені питання
+        </a>
       </div>
     </div>
-  </section>
 
-  <!-- ====== РЕЄСТРАЦІЯ ТА УЧАСТЬ ====== -->
-  <section class="section">
-    <div class="card">
-      <p class="eyebrow" style="color:var(--c-amber)"><span class="dot"></span>Реєстрація та участь</p>
-      <p class="ann" style="margin:0 0 4px">З редакцією статуту, кошторису, а також з текстом питань порядку денного ви можете ознайомитися за наведеним <a href="statut.pdf">посиланням</a> або у членів ініціативної групи:</p>
-      <div class="note">
-        <p>Початок реєстрації -09:45</p>
-        <p>Реєстрація співвласників проводитьсяна підставі паспорту</p>
-        <p>Власники, які придбали нерухомість протягом останніх трьох місяців, повинні мати при собі копію правовстановлюючого документа. Довірені особи повинні мати документи, що підтверджують їхні повноваження. Копії таких документів необхідно надати для долучення до протоколу. У разі зміни прізвища слід надати відповідний документ (свідоцтво про шлюб, розірвання шлюбу тощо). У разі голосування батьків від імені неповнолітніх власників необхідно надати копію свідоцтва про народження дитини. Власники приміщень - юридичні особи, якщо голосує керівник, повинні мати із собою печатку, а у разі голосування за довіреністю необхідно надати оригінал довіреності, оформленої зокрема у простій письмовій формі, яка долучається до листа голосування.</p>
-        <p>Для організаційної допомоги, надання консультацій з питань процедури проведення зборів, запрошений адвокат Юрій Кобзаренко.</p>
+    <!-- illustration -->
+    <div class="reveal relative" data-delay="2">
+      <div class="relative rounded-5xl overflow-hidden shadow-lift border border-white">
+        <svg viewBox="0 0 520 560" class="w-full h-auto block" role="img" aria-label="Ілюстрація багатоквартирного будинку, зеленого подвір'я та спільноти мешканців">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#DCEFE2"/><stop offset="1" stop-color="#F3F9E8"/>
+            </linearGradient>
+            <linearGradient id="bld" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FAF7EE"/><stop offset="1" stop-color="#EEE9DA"/>
+            </linearGradient>
+            <linearGradient id="bld2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#E5EFD9"/><stop offset="1" stop-color="#D4E4C4"/>
+            </linearGradient>
+            <linearGradient id="win" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FBE3A6"/><stop offset="1" stop-color="#F4C05B"/>
+            </linearGradient>
+            <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#9BD0A4"/><stop offset="1" stop-color="#73BC83"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="520" height="560" fill="url(#sky)"/>
+          <circle cx="402" cy="118" r="56" fill="#F6C25B" class="sunpulse"/>
+          <circle cx="402" cy="118" r="82" fill="#F6C25B" opacity=".22" class="sunpulse"/>
+
+          <g class="floaty2">
+            <rect x="40" y="150" width="120" height="250" rx="14" fill="url(#bld2)"/>
+            <g fill="url(#win)">
+              <rect x="58" y="176" width="26" height="30" rx="5"/><rect x="98" y="176" width="26" height="30" rx="5"/>
+              <rect x="58" y="222" width="26" height="30" rx="5"/><rect x="98" y="222" width="26" height="30" rx="5"/>
+              <rect x="58" y="268" width="26" height="30" rx="5"/><rect x="98" y="268" width="26" height="30" rx="5"/>
+              <rect x="58" y="314" width="26" height="30" rx="5"/><rect x="98" y="314" width="26" height="30" rx="5"/>
+            </g>
+          </g>
+
+          <g class="floaty">
+            <rect x="180" y="90" width="200" height="320" rx="20" fill="url(#bld)"/>
+            <rect x="180" y="90" width="200" height="44" rx="20" fill="#3DA66E"/>
+            <rect x="180" y="118" width="200" height="18" fill="#3DA66E"/>
+            <g fill="url(#win)">
+              <rect x="206" y="160" width="34" height="40" rx="7"/><rect x="263" y="160" width="34" height="40" rx="7"/><rect x="320" y="160" width="34" height="40" rx="7"/>
+              <rect x="206" y="220" width="34" height="40" rx="7"/><rect x="263" y="220" width="34" height="40" rx="7"/><rect x="320" y="220" width="34" height="40" rx="7"/>
+              <rect x="206" y="280" width="34" height="40" rx="7"/><rect x="263" y="280" width="34" height="40" rx="7"/><rect x="320" y="280" width="34" height="40" rx="7"/>
+            </g>
+            <rect x="262" y="350" width="56" height="60" rx="12" fill="#2C8456"/>
+            <circle cx="306" cy="382" r="3" fill="#FBE3A6"/>
+          </g>
+
+          <rect x="0" y="400" width="520" height="160" fill="url(#grass)"/>
+          <path d="M0 400 Q260 374 520 400 L520 430 Q260 404 0 430 Z" fill="#AEDAB4" opacity=".7"/>
+          <path d="M210 560 Q260 460 290 410 L340 410 Q300 470 320 560 Z" fill="#EDE7D6"/>
+
+          <g class="floaty">
+            <rect x="426" y="360" width="10" height="48" rx="4" fill="#8a6a44"/>
+            <circle cx="431" cy="350" r="34" fill="#6CC08A"/>
+            <circle cx="412" cy="362" r="22" fill="#2C8456"/>
+            <circle cx="450" cy="362" r="22" fill="#2C8456"/>
+          </g>
+          <g class="floaty2">
+            <rect x="90" y="392" width="8" height="34" rx="4" fill="#8a6a44"/>
+            <circle cx="94" cy="388" r="24" fill="#6CC08A"/>
+          </g>
+
+          <g>
+            <g transform="translate(168,470)"><circle cx="0" cy="0" r="11" fill="#3DA66E"/><rect x="-12" y="12" width="24" height="30" rx="11" fill="#3DA66E"/></g>
+            <g transform="translate(205,484)"><circle cx="0" cy="0" r="11" fill="#F4C05B"/><rect x="-12" y="12" width="24" height="30" rx="11" fill="#F4C05B"/></g>
+            <g transform="translate(366,486)"><circle cx="0" cy="0" r="11" fill="#6CC08A"/><rect x="-12" y="12" width="24" height="30" rx="11" fill="#6CC08A"/></g>
+            <g transform="translate(402,472)"><circle cx="0" cy="0" r="11" fill="#2C8456"/><rect x="-12" y="12" width="24" height="30" rx="11" fill="#2C8456"/></g>
+          </g>
+        </svg>
       </div>
-      <p class="sign">З повагою<br>Член ініціативної групи будинку 28 травня 2026 року<br>Терехова Людмила Валеріївна</p>
-    </div>
-  </section>
 
-  <!-- ====== СТАТУТ ====== -->
-  <section class="section">
-    <div class="card">
-      <p class="eyebrow" style="color:var(--c-blue)"><span class="dot"></span>Документи</p>
-      <h2>Статут ОСББ</h2>
-      <p class="lead">Основний документ, що регулює діяльність об'єднання співвласників.</p>
-      <div class="docrow">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></div>
-        <div class="meta"><b>Статут ОСББ «Зірка Вишгорода», 2026</b><span>PDF · для друку та ознайомлення</span></div>
-        <a class="btn btn-primary" href="statut.pdf" download>Завантажити PDF</a>
+      <div class="absolute -left-3 sm:-left-6 top-10 floaty">
+        <div class="glass rounded-2xl border border-white shadow-soft px-4 py-3 flex items-center gap-3">
+          <span class="grid place-items-center w-9 h-9 rounded-xl bg-green/15 text-greenDeep">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg>
+          </span>
+          <div class="leading-tight">
+            <div class="font-display font-bold text-sm">Спільнота</div>
+            <div class="text-xs text-muted">мешканці вирішують</div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute -right-2 sm:-right-5 bottom-8 floaty2">
+        <div class="glass rounded-2xl border border-white shadow-soft px-4 py-3 flex items-center gap-3">
+          <span class="grid place-items-center w-9 h-9 rounded-xl bg-honey/25 text-honeyDeep">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </span>
+          <div class="leading-tight">
+            <div class="font-display font-bold text-sm">Прозоро</div>
+            <div class="text-xs text-muted">кожна гривня видна</div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-
-</main>
-
-<!-- ====== FAQ ====== -->
-<section class="faq-section">
-  <div class="faq-container">
-    <div class="faq-header">
-      <p class="eyebrow" style="justify-content:center"><span class="dot"></span>FAQ</p>
-      <h2 class="faq-title">Питання і відповіді</h2>
-      <p class="faq-subtitle">Усе, що варто знати про ОСББ нашого будинку — простою мовою</p>
-    </div>
-
-    <div class="faq-group" style="--gc:var(--c-green)">
-      <h3 class="faq-group-title">Тариф і гроші</h3>
-
-      <details class="faq-item">
-        <summary class="faq-question">Чи може правління підвищити внесок самостійно?</summary>
-        <div class="faq-answer">
-          <p>Ні. Розмір внеску встановлюють лише самі співвласники — на загальних зборах, голосуванням. Правління не має такого права.</p>
-          <p>Те, що правління може робити самостійно — це поточні витрати в межах кошторису, який щороку затверджують ті ж збори.</p>
-          <details class="legal-details">
-            <summary>Підтвердження в документах</summary>
-            <div class="legal-content">
-              <p><strong>Статут ОСББ, Розділ III, п. 3</strong> — до виключної компетенції загальних зборів належить «визначення порядку сплати, переліку та розмірів внесків і платежів співвласників».</p>
-              <p><strong>Закон України «Про ОСББ», ст. 10</strong> — порядок сплати та розмір внесків встановлюються виключно загальними зборами співвласників.</p>
-            </div>
-          </details>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary class="faq-question">З чого складається внесок?</summary>
-        <div class="faq-answer">
-          <p>Щомісячний платіж для квартир — <strong>15 грн за м²</strong>. Ця сума складається з чотирьох позицій:</p>
-          <ul>
-            <li><strong>10 грн</strong> — основний внесок на утримання будинку (прибирання, обслуговування, технічна підтримка)</li>
-            <li><strong>2 грн</strong> — електроенергія місць загального користування (освітлення під'їздів, ліфти, насоси)</li>
-            <li><strong>1,50 грн</strong> — ремонтний фонд</li>
-            <li><strong>1,50 грн</strong> — резервний фонд</li>
-          </ul>
-          <p>Ремонтний і резервний фонди — це <strong>не «гроші правлінню»</strong>, а ваша подушка безпеки. Кошти обліковуються окремо в кошторисі й витрачаються лише на ремонти спільного майна або непередбачені аварійні ситуації — і тільки за рішенням зборів.</p>
-          <details class="legal-details">
-            <summary>Підтвердження в документах</summary>
-            <div class="legal-content">
-              <p><strong>Листок опитування, питання 6</strong> — затверджуються основний внесок 10 + 2 = 12 грн/м² для квартир, ремонтний фонд 1,50 грн/м², резервний фонд 1,50 грн/м². Разом для квартир: 15 грн/м². Для нежитлових приміщень суми відрізняються.</p>
-              <p><strong>Статут ОСББ, Розділ IV, п. 5</strong> — «Кошти Об'єднання, включаючи кошти ремонтного, резервного та інших фондів, витрачаються правлінням згідно з кошторисами, затвердженими загальними зборами Об'єднання».</p>
-            </div>
-          </details>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary class="faq-question">Що таке прив'язка до мінімальної зарплати і навіщо вона?</summary>
-        <div class="faq-answer">
-          <p>Це окреме питання в листку опитування. Голосуєте «за» або «проти» — як вважаєте за потрібне.</p>
-          <p>Якщо мешканці підтримають, основна частина внеску буде коригуватись разом зі зростанням мінімальної зарплати. Навіщо це може бути корисно: щоб уникати різких стрибків. Замість великого перегляду раз на кілька років — невеликі рівні зміни.</p>
-          <p>Важливо розуміти: мінімальна зарплата зростає <strong>не щороку</strong> і <strong>в середньому приблизно на 8% на рік</strong>. Тобто прив'язка не означає різких щорічних змін — це поступова, передбачувана індексація.</p>
-          <p>Не підтримають — внесок лишиться без прив'язки. Це повністю ваше рішення.</p>
-          <details class="legal-details">
-            <summary>Підтвердження в документах</summary>
-            <div class="legal-content">
-              <p><strong>Листок опитування, питання 7</strong> — «Про затвердження порядку пропорційного збільшення щомісячних внесків та статей кошторису ОСББ». Це окреме питання з варіантами «за» або «проти».</p>
-            </div>
-          </details>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary class="faq-question">Що означає «ліміт 15 мінзарплат для голови» і чи це безпечно?</summary>
-        <div class="faq-answer">
-          <p>За Статутом, голова правління може підписувати договори на суму до 15 мінімальних зарплат (близько 120 000 грн) без додаткового погодження. Звучить лякаюче, але насправді ось як це працює.</p>
-          <p><strong>Це не «вільні гроші».</strong> Усі кошти ОСББ витрачаються виключно згідно з кошторисом, який щороку затверджують самі співвласники на загальних зборах. Голова не може «вигадати» нову витрату — він лише оперативно оплачує те, на що мешканці вже дали згоду в кошторисі.</p>
-          <p><strong>Це про швидкість, а не про владу.</strong> Зламався насос, протекла труба, потрібне термінове прибирання — щоразу через нові збори це нереально. Тому збори один раз затверджують річний бюджет, а правління в його межах оперативно діє.</p>
-          <p><strong>У вас є інструменти контролю.</strong> Ви бачите щорічний звіт правління і перевірку ревізора, маєте право запитати деталі по будь-якій витраті. У разі підозр — можете ініціювати перевибори правління чи зміну управителя.</p>
-          <p>Жорстке обмеження ліміту просто паралізує будинок в аварійних ситуаціях. Це не контроль — це блокування роботи.</p>
-          <details class="legal-details">
-            <summary>Підтвердження в документах</summary>
-            <div class="legal-content">
-              <p><strong>Статут ОСББ, Розділ III, п. 16</strong> — голова може підписувати договори без погодження на суму не більше 15 мінімальних зарплат. Без обмеження — лише договори комунальних послуг (вода, тепло, електрика) для безперебійної роботи будинку.</p>
-              <p><strong>Статут ОСББ, Розділ IV, п. 5</strong> — «Кошти Об'єднання витрачаються правлінням згідно з кошторисами, затвердженими загальними зборами».</p>
-              <p><strong>Статут ОСББ, Розділ III, п. 3</strong> — затвердження кошторису і річного звіту, обрання та відкликання членів правління — виключна компетенція загальних зборів.</p>
-              <p><strong>Закон України «Про ОСББ», ст. 18</strong> — діяльність правління контролює ревізор з річним звітом перед зборами.</p>
-            </div>
-          </details>
-        </div>
-      </details>
-    </div>
-
-    <div class="faq-group" style="--gc:var(--c-blue)">
-      <h3 class="faq-group-title">Спільне майно та права</h3>
-      <p class="placeholder">Розділ незабаром — питання готуються.</p>
-    </div>
-    <div class="faq-group" style="--gc:var(--c-amber)">
-      <h3 class="faq-group-title">Боржники</h3>
-      <p class="placeholder">Розділ незабаром — питання готуються.</p>
-    </div>
-    <div class="faq-group" style="--gc:var(--c-violet)">
-      <h3 class="faq-group-title">Управління і контроль</h3>
-      <p class="placeholder">Розділ незабаром — питання готуються.</p>
-    </div>
-
-    <div class="faq-footer-note">Не знайшли свого питання? Напишіть нам у чат будинку.</div>
   </div>
 </section>
 
-<footer class="site-footer">
-  <b>ОСББ «Зірка Вишгорода»</b><br>
-  м. Вишгород, вул. Шолуденка, 18А
+<!-- ============== 2. WHY ============== -->
+<section id="why" class="relative py-16 sm:py-24 scroll-mt-20">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="reveal max-w-2xl">
+      <span class="text-sm font-semibold uppercase tracking-wider text-green">Навіщо ОСББ</span>
+      <h2 class="mt-3 font-display font-extrabold text-3xl sm:text-4xl tracking-tight">Будинок, яким керуємо ми самі</h2>
+      <p class="mt-4 text-muted text-lg">Чотири прості причини, чому об'єднання робить життя в домі кращим уже завтра.</p>
+    </div>
+
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="reveal group rounded-4xl bg-white p-7 border border-ink/5 shadow-soft hover:shadow-lift hover:-translate-y-1 transition" data-delay="1">
+        <span class="grid place-items-center w-14 h-14 rounded-2xl bg-green/12 text-greenDeep group-hover:scale-105 transition">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+        </span>
+        <h3 class="mt-5 font-display font-bold text-xl">Контроль будинку</h3>
+        <p class="mt-2 text-muted">Рішення про дім приймаємо ми, а не сторонні організації.</p>
+      </div>
+
+      <div class="reveal group rounded-4xl bg-white p-7 border border-ink/5 shadow-soft hover:shadow-lift hover:-translate-y-1 transition" data-delay="2">
+        <span class="grid place-items-center w-14 h-14 rounded-2xl bg-honey/22 text-honeyDeep group-hover:scale-105 transition">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 4-6"/></svg>
+        </span>
+        <h3 class="mt-5 font-display font-bold text-xl">Прозорі фінанси</h3>
+        <p class="mt-2 text-muted">Видно, скільки зібрано і на що витрачено — без «темних» рахунків.</p>
+      </div>
+
+      <div class="reveal group rounded-4xl bg-white p-7 border border-ink/5 shadow-soft hover:shadow-lift hover:-translate-y-1 transition" data-delay="3">
+        <span class="grid place-items-center w-14 h-14 rounded-2xl bg-leaf/20 text-greenDeep group-hover:scale-105 transition">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21v-7l7-5 7 5v7"/><path d="M9 21v-5h6v5"/><path d="M3 14 12 7l9 7"/></svg>
+        </span>
+        <h3 class="mt-5 font-display font-bold text-xl">Розвиток території</h3>
+        <p class="mt-2 text-muted">Подвір'я, паркінг, освітлення, озеленення — за нашими пріоритетами.</p>
+      </div>
+
+      <div class="reveal group rounded-4xl bg-white p-7 border border-ink/5 shadow-soft hover:shadow-lift hover:-translate-y-1 transition" data-delay="4">
+        <span class="grid place-items-center w-14 h-14 rounded-2xl bg-green/12 text-greenDeep group-hover:scale-105 transition">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
+        </span>
+        <h3 class="mt-5 font-display font-bold text-xl">Спільні рішення</h3>
+        <p class="mt-2 text-muted">Голос кожного співвласника має вагу — домовляємось разом.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 3. OFFICIAL ANNOUNCEMENT (verbatim) ============== -->
+<section id="announce" class="relative py-16 sm:py-24 bg-sand/70 scroll-mt-20 overflow-hidden">
+  <div class="blob w-[420px] h-[420px] -left-24 top-32 bg-leaf/35"></div>
+  <div class="relative z-10 mx-auto max-w-5xl px-5 sm:px-8">
+    <div class="reveal max-w-2xl">
+      <span class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-green">
+        <span class="w-2 h-2 rounded-full bg-green"></span> Офіційне оголошення
+      </span>
+      <h2 class="mt-4 font-display font-extrabold text-3xl sm:text-4xl tracking-tight">Повідомлення про проведення установчих зборів</h2>
+    </div>
+
+    <!-- date band -->
+    <div class="reveal mt-8 rounded-5xl bg-gradient-to-br from-green to-greenDeep text-white p-7 sm:p-9 shadow-glow relative overflow-hidden flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7" data-delay="1">
+      <div class="blob w-60 h-60 -right-10 -bottom-16 bg-honey/40"></div>
+      <span class="relative z-10 grid place-items-center w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-white/15 shrink-0">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+      </span>
+      <div class="relative z-10">
+        <div class="text-white/75">Повідомляємо Вам про те, що</div>
+        <div class="font-display font-extrabold text-2xl sm:text-4xl mt-1 leading-tight">«13» червня 2026 року о 10:00</div>
+      </div>
+    </div>
+
+    <!-- detail cards -->
+    <div class="mt-5 grid md:grid-cols-3 gap-5">
+      <div class="reveal rounded-4xl bg-white border border-ink/5 shadow-soft p-7" data-delay="1">
+        <span class="grid place-items-center w-12 h-12 rounded-2xl bg-green/12 text-greenDeep">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        </span>
+        <h3 class="mt-4 font-display font-bold text-lg">Місце проведення</h3>
+        <p class="mt-2 text-muted leading-relaxed">за адресою: м. Вишгород, вул. Шолуденко 17А, конференц-зал «Вишеград» відбудуться установчі збори зі створення ОСББ у багатоквартирному будинку вул. Шолуденко № 18А</p>
+      </div>
+
+      <div class="reveal rounded-4xl bg-white border border-ink/5 shadow-soft p-7" data-delay="2">
+        <span class="grid place-items-center w-12 h-12 rounded-2xl bg-honey/20 text-honeyDeep">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg>
+        </span>
+        <h3 class="mt-4 font-display font-bold text-lg">З ініціативи мешканців</h3>
+        <p class="mt-2 text-muted leading-relaxed">Збори проводяться з ініціативи членів ініціативної групи:</p>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li class="flex items-baseline gap-2"><span class="text-green">●</span> Меркулов Максим Михайлович, <span class="text-muted">кв. 12</span></li>
+          <li class="flex items-baseline gap-2"><span class="text-green">●</span> Терехова Людмила Валеріївна, <span class="text-muted">кв. 67</span></li>
+          <li class="flex items-baseline gap-2"><span class="text-green">●</span> Гомон Олексій Миколайович, <span class="text-muted">кв. 134</span></li>
+        </ul>
+      </div>
+
+      <div class="reveal rounded-4xl bg-white border border-ink/5 shadow-soft p-7" data-delay="3">
+        <span class="grid place-items-center w-12 h-12 rounded-2xl bg-leaf/20 text-greenDeep">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m2 2 20 20"/></svg>
+        </span>
+        <h3 class="mt-4 font-display font-bold text-lg">Формат участі</h3>
+        <p class="mt-2 text-muted leading-relaxed">Повідомляємо про відсутність технічної можливості участі співвласників в установчих зборах дистанційно, у форматі відеоконференції.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 4. ROADMAP / AGENDA (19 verbatim items) ============== -->
+<section id="roadmap" class="relative py-16 sm:py-24 scroll-mt-20 overflow-hidden">
+  <div class="blob w-[420px] h-[420px] -right-24 top-40 bg-honey/25"></div>
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
+    <div class="reveal max-w-2xl">
+      <span class="text-sm font-semibold uppercase tracking-wider text-green">Порядок денний</span>
+      <h2 class="mt-3 font-display font-extrabold text-3xl sm:text-4xl tracking-tight">Порядок денний установчих зборів</h2>
+      <p class="mt-4 text-muted text-lg">19 питань, які виносяться на голосування співвласників.</p>
+    </div>
+
+    <ol class="reveal relative mt-12 pl-[4.5rem]" data-delay="1">
+      <span class="absolute left-[23px] top-3 bottom-3 w-[3px] rounded-full bg-gradient-to-b from-green/60 via-leaf/50 to-honey/50"></span>
+
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">1</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про створення Об'єднання співвласників багатоквартирного будинку, затвердження його назви</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">2</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про затвердження Статуту ОСББ</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">3</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про обрання голови правління та членів правління ОСББ</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">4</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про обрання ревізора ОСББ</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">5</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про надання повноважень представнику установчих зборів щодо державної реєстрації ОСББ</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">6</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про прийняття будинку в управління, здійснення управління шляхом самозабезпечення, затвердження внесків, затвердження кошторису</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">7</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про затвердження порядку пропорційного збільшення щомісячних внесків та статей кошторису ОСББ</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">8</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про обрання моделі договірних відносин з виконавцями комунальної послуги</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">9</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про встановлення разового внеску на статутну діяльність об'єднання</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">10</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про надання голові правління права укладати договори оренди, договори про встановлення поштоматів тощо</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">11</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про надання права правлінню реалізовувати права об'єднання</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">12</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про надання дозволу на використання приміщення для роботи правління ОСББ та залучених спеціалістів</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">13</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про надання права тимчасово обмежувати користування спільним майном у разі наявності заборгованості</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">14</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про надання права щодо організації відеоспостереження у будинку</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">15</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Щодо отримання права постійного користування на земельну ділянку, на якій розташований багатоквартирний будинок</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">16</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про запровадження системи контролю доступу</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">17</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Встановлення обов'язку демонтувати двері, решітки або інші конструкції що обмежують доступ до спільного майна</div></li>
+      <li class="relative pb-5"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green to-greenDeep text-white font-display font-extrabold shadow-glow">18</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про встановлення сонячної електростанції</div></li>
+      <li class="relative"><span class="absolute -left-[4.5rem] top-0 grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-honey to-honeyDeep text-white font-display font-extrabold shadow-soft">19</span><div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 hover:shadow-lift hover:translate-x-1 transition">Про обрання способу повідомлення про ухвалені рішення</div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============== 5. REGISTRATION & PARTICIPATION (verbatim) ============== -->
+<section id="registration" class="relative py-16 sm:py-24 bg-sand/70 scroll-mt-20">
+  <div class="mx-auto max-w-3xl px-5 sm:px-8">
+    <div class="reveal">
+      <span class="text-sm font-semibold uppercase tracking-wider text-green">Реєстрація та участь</span>
+      <h2 class="mt-3 font-display font-extrabold text-3xl sm:text-4xl tracking-tight">Як взяти участь у зборах</h2>
+      <p class="mt-4 text-muted text-lg">
+        З редакцією статуту, кошторису, а також з текстом питань порядку денного ви можете ознайомитися за наведеним
+        <a href="https://drive.google.com/drive/folders/1-JCQtpiZweFfF2pqiUxce2_elIx5IEaH?usp=sharing" target="_blank" rel="noopener" class="text-greenDeep font-semibold underline underline-offset-2">посиланням</a>
+        або у членів ініціативної групи.
+      </p>
+    </div>
+
+    <!-- quick facts strip -->
+    <div class="reveal mt-8 rounded-4xl bg-white border border-ink/5 shadow-soft p-2" data-delay="1">
+      <div class="rounded-[1.4rem] bg-gradient-to-br from-cream to-mint p-5 sm:p-7 grid sm:grid-cols-2 gap-5">
+        <div class="flex items-center gap-3">
+          <span class="grid place-items-center w-12 h-12 rounded-2xl bg-green text-white shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><div class="text-xs uppercase tracking-wide text-muted">Початок реєстрації</div><div class="font-display font-extrabold text-2xl">09:45</div></div>
+        </div>
+        <div class="flex items-center gap-3 sm:border-l border-ink/10 sm:pl-7">
+          <span class="grid place-items-center w-12 h-12 rounded-2xl bg-honey text-white shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
+          <div><div class="text-xs uppercase tracking-wide text-muted">Реєстрація</div><div class="font-display font-bold text-lg leading-tight">на підставі паспорту</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- what to bring (verbatim) -->
+    <div class="reveal mt-5 rounded-5xl bg-white border border-ink/5 shadow-soft p-7 sm:p-9" data-delay="1">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="grid place-items-center w-11 h-11 rounded-2xl bg-honey/20 text-honeyDeep shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></span>
+        <h3 class="font-display font-bold text-xl">Що взяти з собою</h3>
+      </div>
+      <p class="text-ink/80 leading-relaxed">
+        Власники, які придбали нерухомість протягом останніх трьох місяців, повинні мати при собі копію правовстановлюючого документа. Довірені особи повинні мати документи, що підтверджують їхні повноваження. Копії таких документів необхідно надати для долучення до протоколу. У разі зміни прізвища слід надати відповідний документ (свідоцтво про шлюб, розірвання шлюбу тощо). У разі голосування батьків від імені неповнолітніх власників необхідно надати копію свідоцтва про народження дитини. Власники приміщень — юридичні особи, якщо голосує керівник, повинні мати із собою печатку, а у разі голосування за довіреністю необхідно надати оригінал довіреності, оформленої зокрема у простій письмовій формі, яка долучається до листа голосування.
+      </p>
+    </div>
+
+    <!-- signature -->
+    <div class="reveal mt-6 text-muted" data-delay="1">
+      <p>З повагою</p>
+      <p>Член ініціативної групи будинку 28 травня 2026 року</p>
+      <p class="font-display font-semibold text-ink">Терехова Людмила Валеріївна</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 6. FAQ ============== -->
+<section id="faq" class="relative py-16 sm:py-24 scroll-mt-20">
+  <div class="mx-auto max-w-3xl px-5 sm:px-8">
+    <div class="reveal text-center">
+      <span class="text-sm font-semibold uppercase tracking-wider text-green">Питання та відповіді</span>
+      <h2 class="mt-3 font-display font-extrabold text-3xl sm:text-4xl tracking-tight">Поширені питання</h2>
+      <p class="mt-4 text-muted text-lg">Усе, що варто знати про ОСББ нашого будинку — простою мовою, з посиланням на документи.</p>
+    </div>
+
+    <!-- GROUP 1 -->
+    <div class="reveal mt-12" data-delay="1">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="h-1.5 w-8 rounded-full bg-green"></span>
+        <h3 class="font-display font-extrabold text-sm uppercase tracking-wider text-greenDeep">Тариф і гроші</h3>
+      </div>
+      <div class="space-y-3">
+
+        <details class="faq-item rounded-3xl bg-white border border-ink/5 shadow-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 font-display font-semibold text-lg">
+            Чи може правління підвищити внесок самостійно?
+            <span class="faq-plus shrink-0 grid place-items-center w-8 h-8 rounded-full bg-green/12 text-greenDeep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="faq-body px-6 pb-6 text-muted space-y-3 leading-relaxed">
+            <p>Ні. Розмір внеску встановлюють лише самі співвласники — на загальних зборах, голосуванням. Правління не має такого права.</p>
+            <p>Те, що правління може робити самостійно — це поточні витрати в межах кошторису, який щороку затверджують ті ж збори.</p>
+            <details class="legal mt-2 border-t border-ink/8 pt-4">
+              <summary class="inline-flex items-center gap-2 text-sm font-semibold text-greenDeep"><svg class="legal-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>Підтвердження в документах</summary>
+              <ul class="mt-3 space-y-2 text-sm bg-cream rounded-2xl p-4">
+                <li><strong class="text-ink">Статут ОСББ, Розділ III, п. 3</strong> — до виключної компетенції загальних зборів належить «визначення порядку сплати, переліку та розмірів внесків і платежів співвласників».</li>
+                <li><strong class="text-ink">Закон України «Про ОСББ», ст. 10</strong> — порядок сплати та розмір внесків встановлюються виключно загальними зборами.</li>
+              </ul>
+            </details>
+          </div>
+        </details>
+
+        <details class="faq-item rounded-3xl bg-white border border-ink/5 shadow-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 font-display font-semibold text-lg">
+            З чого складається внесок?
+            <span class="faq-plus shrink-0 grid place-items-center w-8 h-8 rounded-full bg-green/12 text-greenDeep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="faq-body px-6 pb-6 text-muted space-y-3 leading-relaxed">
+            <p>Щомісячний платіж для квартир — <strong>15 грн за м²</strong>. Ця сума складається з чотирьох позицій:</p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li><strong>10 грн</strong> — основний внесок на утримання будинку (прибирання, обслуговування, технічна підтримка)</li>
+              <li><strong>2 грн</strong> — електроенергія місць загального користування (освітлення під'їздів, ліфти, насоси)</li>
+              <li><strong>1,50 грн</strong> — ремонтний фонд</li>
+              <li><strong>1,50 грн</strong> — резервний фонд</li>
+            </ul>
+            <p>Ремонтний і резервний фонди — це <strong>не «гроші правлінню»</strong>, а ваша подушка безпеки. Кошти обліковуються окремо в кошторисі й витрачаються лише на ремонти спільного майна або непередбачені аварійні ситуації.</p>
+            <details class="legal mt-2 border-t border-ink/8 pt-4">
+              <summary class="inline-flex items-center gap-2 text-sm font-semibold text-greenDeep"><svg class="legal-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>Підтвердження в документах</summary>
+              <ul class="mt-3 space-y-2 text-sm bg-cream rounded-2xl p-4">
+                <li><strong class="text-ink">Листок опитування, питання 6</strong> — затверджуються: основний внесок 10 грн + 2 грн на загальнобудинкову електрику = 12 грн/м² для квартир; внесок до резервного фонду 1,50 грн/м²; внесок до ремонтного фонду 1,50 грн/м². Разом для квартир: 15 грн/м². Для нежитлових приміщень суми відрізняються.</li>
+                <li><strong class="text-ink">Статут ОСББ, Розділ IV, п. 5</strong> — «Кошти Об'єднання, включаючи кошти ремонтного, резервного та інших фондів, витрачаються правлінням згідно з кошторисами, затвердженими загальними зборами Об'єднання».</li>
+              </ul>
+            </details>
+          </div>
+        </details>
+
+        <details class="faq-item rounded-3xl bg-white border border-ink/5 shadow-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 font-display font-semibold text-lg">
+            Що таке прив'язка до мінімальної зарплати і навіщо вона?
+            <span class="faq-plus shrink-0 grid place-items-center w-8 h-8 rounded-full bg-green/12 text-greenDeep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="faq-body px-6 pb-6 text-muted space-y-3 leading-relaxed">
+            <p>Це окреме питання в листку опитування. Голосуєте «за» або «проти» — як вважаєте за потрібне.</p>
+            <p>Якщо мешканці підтримають, основна частина внеску буде коригуватись разом зі зростанням мінімальної зарплати. Навіщо це може бути корисно: щоб уникати різких стрибків. Замість великого перегляду раз на кілька років — невеликі рівні зміни.</p>
+            <p>Важливо розуміти: мінімальна зарплата зростає <strong>не щороку</strong> і в середньому приблизно на 8% на рік. Тобто прив'язка не означає різких щорічних змін — це поступова, передбачувана індексація.</p>
+            <p>Не підтримають — внесок лишиться без прив'язки. Це повністю ваше рішення.</p>
+            <details class="legal mt-2 border-t border-ink/8 pt-4">
+              <summary class="inline-flex items-center gap-2 text-sm font-semibold text-greenDeep"><svg class="legal-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>Підтвердження в документах</summary>
+              <ul class="mt-3 space-y-2 text-sm bg-cream rounded-2xl p-4">
+                <li><strong class="text-ink">Листок опитування, питання 7</strong> — «Про затвердження порядку пропорційного збільшення щомісячних внесків та статей кошторису ОСББ». Це окреме питання з варіантами «за» або «проти».</li>
+              </ul>
+            </details>
+          </div>
+        </details>
+
+        <details class="faq-item rounded-3xl bg-white border border-ink/5 shadow-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 font-display font-semibold text-lg">
+            Що означає «ліміт 15 мінзарплат для голови» і чи це безпечно?
+            <span class="faq-plus shrink-0 grid place-items-center w-8 h-8 rounded-full bg-green/12 text-greenDeep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="faq-body px-6 pb-6 text-muted space-y-3 leading-relaxed">
+            <p>За Статутом, голова правління може підписувати договори на суму до 15 мінімальних зарплат (близько 120 000 грн) без додаткового погодження. Звучить лякаюче, але насправді ось як це працює.</p>
+            <p><strong>Це не «вільні гроші».</strong> Усі кошти ОСББ витрачаються виключно згідно з кошторисом, який щороку затверджують самі співвласники на загальних зборах. Голова не може «вигадати» нову витрату — він лише оперативно оплачує те, на що мешканці вже дали згоду в кошторисі.</p>
+            <p><strong>Це про швидкість, а не про владу.</strong> Зламався насос, протекла труба, потрібне термінове прибирання — щоразу через нові збори це нереально. Тому збори один раз затверджують річний бюджет, а правління в його межах оперативно діє.</p>
+            <p><strong>У вас є інструменти контролю.</strong> Ви бачите щорічний звіт правління і перевірку ревізора, маєте право запитати деталі по будь-якій витраті. У разі підозр — можете ініціювати перевибори правління чи зміну управителя.</p>
+            <p>Жорстке обмеження ліміту просто паралізує будинок в аварійних ситуаціях. Це не контроль — це блокування роботи.</p>
+            <details class="legal mt-2 border-t border-ink/8 pt-4">
+              <summary class="inline-flex items-center gap-2 text-sm font-semibold text-greenDeep"><svg class="legal-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>Підтвердження в документах</summary>
+              <ul class="mt-3 space-y-2 text-sm bg-cream rounded-2xl p-4">
+                <li><strong class="text-ink">Статут ОСББ, Розділ III, п. 16</strong> — голова може підписувати договори без погодження на суму не більше 15 мінімальних зарплат. Без обмеження — лише договори комунальних послуг (вода, тепло, електрика) для безперебійної роботи будинку.</li>
+                <li><strong class="text-ink">Статут ОСББ, Розділ IV, п. 5</strong> — «Кошти Об'єднання витрачаються правлінням згідно з кошторисами, затвердженими загальними зборами».</li>
+                <li><strong class="text-ink">Статут ОСББ, Розділ III, п. 3</strong> — затвердження кошторису і річного звіту, обрання та відкликання членів правління — виключна компетенція загальних зборів.</li>
+                <li><strong class="text-ink">Закон України «Про ОСББ», ст. 18</strong> — діяльність правління контролює ревізор з річним звітом перед зборами.</li>
+              </ul>
+            </details>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
+    <!-- GROUP 2 -->
+    <div class="reveal mt-10" data-delay="1">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="h-1.5 w-8 rounded-full bg-leaf"></span>
+        <h3 class="font-display font-extrabold text-sm uppercase tracking-wider text-greenDeep">Спільне майно та права</h3>
+      </div>
+      <div class="space-y-3">
+
+        <details class="faq-item rounded-3xl bg-white border border-ink/5 shadow-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 font-display font-semibold text-lg">
+            Чи може ОСББ відключити мені воду, світло, інтернет?
+            <span class="faq-plus shrink-0 grid place-items-center w-8 h-8 rounded-full bg-green/12 text-greenDeep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="faq-body px-6 pb-6 text-muted space-y-3 leading-relaxed">
+            <p>Ні. Ці послуги ви отримуєте за прямими індивідуальними договорами з постачальниками — обленерго, водоканалом, своїм інтернет-провайдером. ОСББ не є посередником у цих договорах і не може їх «розірвати» або відключити вас.</p>
+            <p>Якщо ви платили за світло Yasno чи DTEK — продовжуєте платити так само. Якщо користуєтесь Etherlink чи будь-яким іншим провайдером — нічого не змінюється.</p>
+            <p>Окремо в листку опитування є окреме питання про можливість обмежувати користування спільною інфраструктурою (ліфти, шлагбаум) для боржників із тривалою заборгованістю — понад три місяці. Це не стосується ні вашої квартири, ні комунальних послуг — лише спільної інфраструктури будинку. Підтримати таке правило чи ні — вирішуєте ви голосуванням. Деталі — в окремій картці про роботу з боржниками.</p>
+            <details class="legal mt-2 border-t border-ink/8 pt-4">
+              <summary class="inline-flex items-center gap-2 text-sm font-semibold text-greenDeep"><svg class="legal-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>Підтвердження в документах</summary>
+              <ul class="mt-3 space-y-2 text-sm bg-cream rounded-2xl p-4">
+                <li><strong class="text-ink">Постанова Верховного Суду від 12.12.2018, справа №766/22228/17</strong> — ОСББ не має права обмежувати постачання комунальних послуг боржникам, якщо договір укладений безпосередньо між мешканцем і постачальником.</li>
+                <li><strong class="text-ink">Листок опитування, питання 13</strong> — «Про надання права тимчасово обмежувати користування спільним майном у разі наявності заборгованості». Окреме питання голосування з варіантами «за» / «проти». Стосується лише спільної інфраструктури будинку (ліфти, шлагбаум), не комунальних послуг.</li>
+              </ul>
+            </details>
+          </div>
+        </details>
+
+        <details class="faq-item rounded-3xl bg-white border border-ink/5 shadow-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 font-display font-semibold text-lg">
+            Чи може ОСББ зайти в мою квартиру?
+            <span class="faq-plus shrink-0 grid place-items-center w-8 h-8 rounded-full bg-green/12 text-greenDeep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="faq-body px-6 pb-6 text-muted space-y-3 leading-relaxed">
+            <p>Ні. У вашу квартиру представники ОСББ заходити права не мають. У чинній редакції Статуту такого пункту немає взагалі.</p>
+            <p>Що передбачено — це доступ до спільних приміщень будинку (стояки, щитові, інженерні мережі, тамбури), якщо вони відокремлені дверима або решітками. Це потрібно для перевірки стану мереж і ліквідації аварій — щоб у разі прориву чи замикання можна було швидко дістатись до проблемної ділянки. Достатньо передати правлінню дублікат ключа або забезпечити інший спосіб доступу.</p>
+            <p>Тобто йдеться лише про доступ до аварійно важливих місць у спільних приміщеннях, а не до квартир.</p>
+            <details class="legal mt-2 border-t border-ink/8 pt-4">
+              <summary class="inline-flex items-center gap-2 text-sm font-semibold text-greenDeep"><svg class="legal-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>Підтвердження в документах</summary>
+              <ul class="mt-3 space-y-2 text-sm bg-cream rounded-2xl p-4">
+                <li><strong class="text-ink">Статут ОСББ, Розділ V</strong> — норма про доступ до квартир відсутня.</li>
+                <li><strong class="text-ink">Листок опитування, питання 14</strong> — встановлюється обов'язок співвласників, які відокремили тамбури дверима/решітками, надати правлінню контактні дані або дублікат ключа для оперативного доступу до спільних інженерних мереж і елементів спільного майна у разі аварії.</li>
+              </ul>
+            </details>
+          </div>
+        </details>
+
+        <details class="faq-item rounded-3xl bg-white border border-ink/5 shadow-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 font-display font-semibold text-lg">
+            Чи будуть «роздавати» спільне майно в оренду?
+            <span class="faq-plus shrink-0 grid place-items-center w-8 h-8 rounded-full bg-green/12 text-greenDeep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="faq-body px-6 pb-6 text-muted space-y-3 leading-relaxed">
+            <p>Питання надання правлінню права укладати договори оренди — окремий пункт у листку опитування. Голосуєте за або проти — як вважаєте за потрібне.</p>
+            <p>По суті: оренда спільного майна — це додаткові кошти на розвиток будинку. Але реальність у тому, що більшість площ, які мали б бути спільними, вже не належать будинку. Те, що лишилось, — це невеликі площі: під поштомати, обладнання провайдерів.</p>
+            <p>Наш будинок розташований не в найпривабливішій локації для бізнесу — великих орендарів тут шукати марно. Тож реально йдеться про дрібні суми, ради яких щоразу скликати збори було б дорожче за сам прибуток.</p>
+            <p>І найголовніше: всі ці кошти підуть на рахунок ОСББ — тобто на потреби вашого будинку. Ні копійки в чиюсь кишеню.</p>
+            <details class="legal mt-2 border-t border-ink/8 pt-4">
+              <summary class="inline-flex items-center gap-2 text-sm font-semibold text-greenDeep"><svg class="legal-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>Підтвердження в документах</summary>
+              <ul class="mt-3 space-y-2 text-sm bg-cream rounded-2xl p-4">
+                <li><strong class="text-ink">Листок опитування, питання 11</strong> — «Про надання голові правління права укладати договори оренди, договори про встановлення поштоматів тощо». Окреме питання голосування.</li>
+                <li><strong class="text-ink">Листок передбачає мінімальні розміри плати</strong> — для провайдерів від 300 грн/міс, оренди приміщень від 100 грн/м²/міс — щоб правління не могло занижувати ціни.</li>
+                <li><strong class="text-ink">Усі кошти</strong> зараховуються на рахунок ОСББ і витрачаються згідно з кошторисом, затвердженим зборами.</li>
+              </ul>
+            </details>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
+    <!-- GROUP 3 -->
+    <div class="reveal mt-10" data-delay="1">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="h-1.5 w-8 rounded-full bg-honey"></span>
+        <h3 class="font-display font-extrabold text-sm uppercase tracking-wider text-honeyDeep">Боржники</h3>
+      </div>
+      <div class="space-y-3">
+
+        <details class="faq-item rounded-3xl bg-white border border-ink/5 shadow-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 font-display font-semibold text-lg">
+            Як ОСББ працюватиме з боржниками?
+            <span class="faq-plus shrink-0 grid place-items-center w-8 h-8 rounded-full bg-honey/20 text-honeyDeep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="faq-body px-6 pb-6 text-muted space-y-3 leading-relaxed">
+            <p>Так само, як це робить будь-яка УК або ОСББ, — суворо в межах закону. Жодних «свавільних» дій.</p>
+            <p>Спочатку — письмове попередження боржнику. Далі час для добровільної оплати. Якщо борг не сплачено — звернення до суду, отримання судового рішення і стягнення через виконавчу службу. Це стандартна, законна процедура.</p>
+            <p>Окремо в листку опитування є питання про можливість тимчасово обмежувати користування спільним майном (ліфти, шлагбаум, паркування, інтернет-обладнання на спільних мережах) для тривалих боржників. Це не стосується вашої квартири, води, тепла чи комунальних послуг — ті йдуть за прямими договорами з постачальниками. Йдеться лише про спільну інфраструктуру, обслуговування якої оплачують всі інші мешканці.</p>
+            <p>Логіка проста: якщо хтось понад три місяці не платить за обслуговування ліфта — справедливо, щоб він тимчасово ним не користувався, поки за нього платять інші. Це питання теж окреме — вирішують самі мешканці голосуванням.</p>
+            <details class="legal mt-2 border-t border-ink/8 pt-4">
+              <summary class="inline-flex items-center gap-2 text-sm font-semibold text-honeyDeep"><svg class="legal-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>Підтвердження в документах</summary>
+              <ul class="mt-3 space-y-2 text-sm bg-cream rounded-2xl p-4">
+                <li><strong class="text-ink">Закон України «Про ОСББ», ст. 10 і 13</strong> — порядок стягнення заборгованості: попередження → суд → виконавча служба.</li>
+                <li><strong class="text-ink">Листок опитування, питання 13</strong> — «Про надання права тимчасово обмежувати користування спільним майном у разі наявності заборгованості». Передбачено письмове попередження і 7 днів на сплату перед застосуванням обмежень. Стосується лише боргів понад три місячні розміри обов'язкових внесків.</li>
+              </ul>
+            </details>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
+    <!-- GROUP 4 -->
+    <div class="reveal mt-10" data-delay="1">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="h-1.5 w-8 rounded-full bg-greenDeep"></span>
+        <h3 class="font-display font-extrabold text-sm uppercase tracking-wider text-greenDeep">Управління і контроль</h3>
+      </div>
+      <div class="space-y-3">
+
+        <details class="faq-item rounded-3xl bg-white border border-ink/5 shadow-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 font-display font-semibold text-lg">
+            Чи можна переобрати правління, якщо воно не справляється?
+            <span class="faq-plus shrink-0 grid place-items-center w-8 h-8 rounded-full bg-green/12 text-greenDeep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="faq-body px-6 pb-6 text-muted space-y-3 leading-relaxed">
+            <p>Так. У цьому одна з головних переваг ОСББ перед нинішньою моделлю.</p>
+            <p>Загальні збори можуть у будь-який момент припинити повноваження правління, голови або окремих його членів — і обрати нових. Так само збори можуть прийняти рішення найняти зовнішнього управителя (професійну керуючу компанію) замість самоврядування.</p>
+            <p>Для порівняння — зараз у нас прямі договори з УК, і змінити її на практиці вкрай складно. ОСББ це питання спрощує: ви, як співвласники, повноцінно керуєте процесом.</p>
+            <details class="legal mt-2 border-t border-ink/8 pt-4">
+              <summary class="inline-flex items-center gap-2 text-sm font-semibold text-greenDeep"><svg class="legal-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>Підтвердження в документах</summary>
+              <ul class="mt-3 space-y-2 text-sm bg-cream rounded-2xl p-4">
+                <li><strong class="text-ink">Статут ОСББ, Розділ III, п. 3</strong> — «обрання та відкликання (припинення повноважень) членів правління» і «обрання та відкликання управителя» належать до виключної компетенції загальних зборів.</li>
+                <li><strong class="text-ink">Статут ОСББ, Розділ III, п. 13</strong> — «Загальні збори Об'єднання своїм рішенням вправі в будь-який час припинити повноваження правління чи окремих його членів».</li>
+              </ul>
+            </details>
+          </div>
+        </details>
+
+        <details class="faq-item rounded-3xl bg-white border border-ink/5 shadow-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 font-display font-semibold text-lg">
+            Як я бачитиму, куди йдуть мої гроші?
+            <span class="faq-plus shrink-0 grid place-items-center w-8 h-8 rounded-full bg-green/12 text-greenDeep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="faq-body px-6 pb-6 text-muted space-y-3 leading-relaxed">
+            <p>Кілька рівнів прозорості.</p>
+            <p><strong>Щорічний фінансовий звіт.</strong> Правління готує річний звіт, його перевіряє обраний мешканцями ревізор, далі звіт затверджують загальні збори. Це обов'язково — і за Законом, і за Статутом.</p>
+            <p><strong>Право запиту.</strong> Будь-який співвласник має право ознайомитися з рішеннями зборів, протоколами, кошторисом — і за власний рахунок робити з них копії.</p>
+            <p><strong>Цифрова прозорість.</strong> Ми плануємо використовувати онлайн-систему «ДАХ» для ведення обліку — щоб мешканці бачили основні фінансові операції в реальному часі, без чекання звіту раз на рік. Це наша ціль після створення ОСББ.</p>
+            <details class="legal mt-2 border-t border-ink/8 pt-4">
+              <summary class="inline-flex items-center gap-2 text-sm font-semibold text-greenDeep"><svg class="legal-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>Підтвердження в документах</summary>
+              <ul class="mt-3 space-y-2 text-sm bg-cream rounded-2xl p-4">
+                <li><strong class="text-ink">Статут ОСББ, Розділ III, п. 3</strong> — затвердження кошторису, балансу і річного звіту Об'єднання — виключна компетенція загальних зборів.</li>
+                <li><strong class="text-ink">Статут ОСББ, Розділ IV, п. 5</strong> — правління щорічно складає звіт про виконання кошторису, який перевіряє ревізор і затверджують збори.</li>
+                <li><strong class="text-ink">Статут ОСББ</strong> — співвласники мають право ознайомлюватися з рішеннями і протоколами загальних зборів і робити з них копії.</li>
+                <li><strong class="text-ink">Закон України «Про ОСББ», ст. 18</strong> — діяльність правління контролює ревізор з річним звітом.</li>
+              </ul>
+            </details>
+          </div>
+        </details>
+
+        <details class="faq-item rounded-3xl bg-white border border-ink/5 shadow-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 font-display font-semibold text-lg">
+            Що змінюється з ОСББ порівняно з нинішньою УК?
+            <span class="faq-plus shrink-0 grid place-items-center w-8 h-8 rounded-full bg-green/12 text-greenDeep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="faq-body px-6 pb-6 text-muted space-y-3 leading-relaxed">
+            <p>Якщо коротко — з'являється реальний контроль мешканців над тим, що відбувається в будинку. Зараз ви платите УК і фактично не бачите, куди йдуть гроші й чому щось не робиться. З ОСББ — рішення ухвалюєте ви, кошторис затверджуєте ви, звіт перевіряєте ви.</p>
+            <p>Конкретніше:</p>
+            <ul class="list-disc pl-5 space-y-1.5">
+              <li><strong>Доступ до державних програм</strong> енергоефективності, співфінансування ремонтів, грантів — для будинку з ОСББ це доступно, для приватного будинку з УК — ні.</li>
+              <li><strong>Прозорий рахунок</strong> — гроші лежать на рахунку самого будинку, а не на рахунку сторонньої компанії.</li>
+              <li><strong>Контроль над підрядниками</strong> — мешканці вибирають, кого наймати на прибирання, ремонти, обслуговування. Незадоволені якістю — змінюєте підрядника.</li>
+              <li><strong>Можливість поступово виводити будинок з аварійного стану</strong> — пріоритети ремонтів встановлюють самі мешканці, а не «спущена згори» УК.</li>
+              <li><strong>Інструменти на майбутнє</strong> — встановлення відеоспостереження, шлагбаумів, системи контролю доступу, сонячних панелей. Усе це — теж рішення зборів.</li>
+            </ul>
+            <p>І якщо щось не подобається — мешканці завжди можуть переобрати правління або взагалі найняти зовнішнього управителя.</p>
+            <details class="legal mt-2 border-t border-ink/8 pt-4">
+              <summary class="inline-flex items-center gap-2 text-sm font-semibold text-greenDeep"><svg class="legal-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>Підтвердження в документах</summary>
+              <ul class="mt-3 space-y-2 text-sm bg-cream rounded-2xl p-4">
+                <li><strong class="text-ink">Статут ОСББ, Розділ II</strong> — мета створення Об'єднання включає «забезпечення належного утримання будинку», «сприяння в отриманні житлово-комунальних послуг належної якості за обґрунтованими цінами», участь у програмах розвитку інфраструктури.</li>
+                <li><strong class="text-ink">Листок опитування</strong> — окремі питання щодо встановлення відеоспостереження, системи контролю доступу, шлагбаумів, сонячної електростанції на даху, оформлення земельної ділянки.</li>
+              </ul>
+            </details>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
+    <p class="reveal mt-10 text-center text-muted">Не знайшли свого питання? Напишіть нам — контакти нижче.</p>
+  </div>
+</section>
+
+<!-- ============== 7. INITIATIVE GROUP ============== -->
+<section id="team" class="relative py-16 sm:py-24 bg-sand/70 scroll-mt-20">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="reveal max-w-2xl">
+      <span class="text-sm font-semibold uppercase tracking-wider text-green">Хто організовує</span>
+      <h2 class="mt-3 font-display font-extrabold text-3xl sm:text-4xl tracking-tight">Ініціативна група</h2>
+      <p class="mt-4 text-muted text-lg">Сусіди, які взяли на себе підготовку зборів. Завжди раді відповісти на ваші питання.</p>
+    </div>
+
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="reveal group rounded-4xl bg-white p-7 border border-ink/5 shadow-soft hover:shadow-lift hover:-translate-y-1 transition" data-delay="1">
+        <div class="flex items-center gap-4">
+          <span class="grid place-items-center w-16 h-16 rounded-3xl bg-gradient-to-br from-green to-leaf text-white font-display font-extrabold text-xl shadow-glow">ММ</span>
+          <div>
+            <h3 class="font-display font-bold text-lg leading-tight">Меркулов Максим Михайлович</h3>
+            <p class="text-muted text-sm mt-0.5">кв. 12</p>
+          </div>
+        </div>
+        <div class="mt-5 inline-flex items-center gap-2 text-sm text-greenDeep font-medium">
+          <span class="w-2 h-2 rounded-full bg-green"></span> Ініціативна група
+        </div>
+      </div>
+
+      <div class="reveal group rounded-4xl bg-white p-7 border border-ink/5 shadow-soft hover:shadow-lift hover:-translate-y-1 transition" data-delay="2">
+        <div class="flex items-center gap-4">
+          <span class="grid place-items-center w-16 h-16 rounded-3xl bg-gradient-to-br from-greenDeep to-green text-white font-display font-extrabold text-xl shadow-soft">ТЛ</span>
+          <div>
+            <h3 class="font-display font-bold text-lg leading-tight">Терехова Людмила Валеріївна</h3>
+            <p class="text-muted text-sm mt-0.5">кв. 67</p>
+          </div>
+        </div>
+        <div class="mt-5 inline-flex items-center gap-2 text-sm text-greenDeep font-medium">
+          <span class="w-2 h-2 rounded-full bg-green"></span> Ініціативна група
+        </div>
+      </div>
+
+      <div class="reveal group rounded-4xl bg-white p-7 border border-ink/5 shadow-soft hover:shadow-lift hover:-translate-y-1 transition" data-delay="3">
+        <div class="flex items-center gap-4">
+          <span class="grid place-items-center w-16 h-16 rounded-3xl bg-gradient-to-br from-honey to-honeyDeep text-white font-display font-extrabold text-xl shadow-soft">ГО</span>
+          <div>
+            <h3 class="font-display font-bold text-lg leading-tight">Гомон Олексій Миколайович</h3>
+            <p class="text-muted text-sm mt-0.5">кв. 134</p>
+          </div>
+        </div>
+        <div class="mt-5 inline-flex items-center gap-2 text-sm text-greenDeep font-medium">
+          <span class="w-2 h-2 rounded-full bg-green"></span> Ініціативна група
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 8. DOCUMENTS ============== -->
+<section id="docs" class="relative py-16 sm:py-24 scroll-mt-20">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="reveal max-w-2xl">
+      <span class="text-sm font-semibold uppercase tracking-wider text-green">Готуйтесь заздалегідь</span>
+      <h2 class="mt-3 font-display font-extrabold text-3xl sm:text-4xl tracking-tight">Документи</h2>
+      <p class="mt-4 text-muted text-lg">Ознайомтеся з ключовими документами до зборів — так рішення буде усвідомленим.</p>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-3 gap-5">
+      <a href="statut.pdf" target="_blank" rel="noopener" class="reveal group rounded-4xl bg-white p-7 border border-ink/5 shadow-soft hover:shadow-lift hover:-translate-y-1 transition flex flex-col" data-delay="1">
+        <span class="grid place-items-center w-14 h-14 rounded-2xl bg-green/12 text-greenDeep">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg>
+        </span>
+        <h3 class="mt-5 font-display font-bold text-xl">Статут ОСББ</h3>
+        <p class="mt-2 text-muted flex-1">Основний документ, що регулює діяльність об'єднання співвласників.</p>
+        <span class="mt-5 inline-flex items-center gap-2 font-semibold text-greenDeep group-hover:gap-3 transition-all">Відкрити PDF <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+
+      <a href="lystok-opytuvannya-uchast.pdf" target="_blank" rel="noopener" class="reveal group rounded-4xl bg-white p-7 border border-ink/5 shadow-soft hover:shadow-lift hover:-translate-y-1 transition flex flex-col" data-delay="2">
+        <span class="grid place-items-center w-14 h-14 rounded-2xl bg-honey/22 text-honeyDeep">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </span>
+        <h3 class="mt-5 font-display font-bold text-xl">Листок опитування</h3>
+        <p class="mt-2 text-muted flex-1">Для співвласника, який бере участь у голосуванні на зборах.</p>
+        <span class="mt-5 inline-flex items-center gap-2 font-semibold text-greenDeep group-hover:gap-3 transition-all">Відкрити PDF <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+
+      <a href="lystok-opytuvannya-bez-uchasti.pdf" target="_blank" rel="noopener" class="reveal group rounded-4xl bg-white p-7 border border-ink/5 shadow-soft hover:shadow-lift hover:-translate-y-1 transition flex flex-col" data-delay="3">
+        <span class="grid place-items-center w-14 h-14 rounded-2xl bg-leaf/20 text-greenDeep">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h2M9 17h6"/></svg>
+        </span>
+        <h3 class="mt-5 font-display font-bold text-xl">Листок опитування</h3>
+        <p class="mt-2 text-muted flex-1">Для співвласника, який не брав участі в зборах (письмове голосування).</p>
+        <span class="mt-5 inline-flex items-center gap-2 font-semibold text-greenDeep group-hover:gap-3 transition-all">Відкрити PDF <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+    </div>
+
+    <!-- secondary: QR -->
+    <div class="reveal mt-5 rounded-4xl bg-white border border-ink/5 shadow-soft p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-5 sm:gap-7" data-delay="2">
+      <a href="https://drive.google.com/drive/folders/1-JCQtpiZweFfF2pqiUxce2_elIx5IEaH?usp=sharing" target="_blank" rel="noopener" class="shrink-0 rounded-2xl bg-cream border border-green/15 p-2.5">
+        <img src="qr.png" alt="QR-код на теку з документами ОСББ" width="96" height="96" class="w-24 h-24 object-contain" />
+      </a>
+      <div class="text-center sm:text-left">
+        <h3 class="font-display font-bold text-lg">Усі документи також за QR-кодом</h3>
+        <p class="mt-1 text-muted">Наведіть камеру телефона — відкриється спільна тека з усіма документами зборів.</p>
+        <a href="https://drive.google.com/drive/folders/1-JCQtpiZweFfF2pqiUxce2_elIx5IEaH?usp=sharing" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-2 text-greenDeep font-semibold hover:gap-3 transition-all">Відкрити теку з документами <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 8b. LAWYER ============== -->
+<section id="lawyer" class="relative py-16 sm:py-24 bg-sand/70 scroll-mt-20 overflow-hidden">
+  <div class="blob w-[420px] h-[420px] -right-24 top-10 bg-leaf/30"></div>
+  <div class="relative z-10 mx-auto max-w-4xl px-5 sm:px-8">
+    <div class="reveal rounded-5xl bg-white border border-ink/5 shadow-soft overflow-hidden grid sm:grid-cols-[auto_1fr]">
+      <div class="bg-gradient-to-br from-green to-greenDeep text-white p-8 sm:p-10 flex sm:flex-col items-center sm:items-start gap-4 sm:justify-center">
+        <span class="grid place-items-center w-16 h-16 rounded-3xl bg-white/15">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7v5c0 4.5 3 7.5 8 9 5-1.5 8-4.5 8-9V7l-8-4Z"/><path d="M12 8v4M10 10h4"/></svg>
+        </span>
+        <div class="sm:mt-5">
+          <div class="font-display font-extrabold text-xl leading-tight">Юрій<br class="hidden sm:block" /> Кобзаренко</div>
+          <div class="text-white/70 text-sm mt-1">адвокат</div>
+        </div>
+      </div>
+      <div class="p-8 sm:p-10 flex flex-col justify-center">
+        <span class="text-sm font-semibold uppercase tracking-wider text-green">Юридичний супровід</span>
+        <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl tracking-tight">Збори під супроводом адвоката</h2>
+        <p class="mt-4 text-muted text-lg leading-relaxed">
+          Для організаційної допомоги, надання консультацій з питань процедури проведення зборів запрошений адвокат
+          <span class="font-semibold text-ink">Юрій Кобзаренко</span>.
+        </p>
+        <div class="mt-6 inline-flex items-center gap-2 rounded-full bg-green/10 text-greenDeep px-4 py-2 text-sm font-medium w-fit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Збори проходять відповідно до закону
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 9. CONTACTS ============== -->
+<section id="contacts" class="relative py-20 sm:py-28 scroll-mt-20 bg-ink text-cream overflow-hidden">
+  <div class="blob w-[460px] h-[460px] -right-24 -top-24 bg-green/30"></div>
+  <div class="blob w-80 h-80 -left-20 bottom-0 bg-greenDeep/40"></div>
+  <div class="relative z-10 mx-auto max-w-5xl px-5 sm:px-8">
+    <div class="reveal max-w-2xl">
+      <span class="text-sm font-semibold uppercase tracking-wider text-leaf">Маєте питання?</span>
+      <h2 class="mt-3 font-display font-extrabold text-3xl sm:text-4xl tracking-tight">Контакти для консультацій</h2>
+      <p class="mt-4 text-cream/70 text-lg">Звертайтеся до ОСББ «Зірка Вишгорода» — допоможемо з будь-якими питаннями щодо зборів.</p>
+    </div>
+
+    <div class="reveal mt-10 grid sm:grid-cols-2 gap-4" data-delay="1">
+      <a href="tel:+380937588146" class="flex items-center gap-4 rounded-3xl bg-white/8 hover:bg-white/14 transition px-6 py-6">
+        <span class="grid place-items-center w-[52px] h-[52px] rounded-2xl bg-green/25 text-leaf shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>
+        <div class="min-w-0"><div class="text-xs uppercase tracking-wide text-cream/50">Телефон</div><div class="font-display font-bold text-xl">+38 093 758 81 46</div></div>
+      </a>
+      <a href="mailto:osbb.zirka.vyshgoroda@gmail.com" class="flex items-center gap-4 rounded-3xl bg-white/8 hover:bg-white/14 transition px-6 py-6">
+        <span class="grid place-items-center w-[52px] h-[52px] rounded-2xl bg-honey/30 text-honey shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 6 10-6"/></svg></span>
+        <div class="min-w-0"><div class="text-xs uppercase tracking-wide text-cream/50">Пошта</div><div class="font-display font-bold text-lg break-words">osbb.zirka.vyshgoroda@gmail.com</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FINAL CTA ============== -->
+<section class="relative py-20 sm:py-28 bg-gradient-to-br from-green to-greenDeep text-white overflow-hidden">
+  <div class="blob w-[420px] h-[420px] -left-20 -bottom-20 bg-honey/40"></div>
+  <div class="blob w-80 h-80 -right-16 -top-16 bg-leaf/40"></div>
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8 text-center">
+    <div class="reveal">
+      <h2 class="font-display font-extrabold text-3xl sm:text-5xl tracking-tight">Будьмо разом 13 червня</h2>
+      <p class="mt-4 text-white/85 text-lg max-w-xl mx-auto">Ваш голос — це майбутнє нашого будинку. Приходьте, і зробімо дім кращим разом.</p>
+      <div class="mt-8 flex flex-wrap gap-3 justify-center">
+        <a href="#event" class="inline-flex items-center gap-2 rounded-full bg-white text-greenDeep px-7 py-3.5 font-semibold shadow-soft hover:-translate-y-0.5 transition">Деталі зборів</a>
+        <a href="#faq" class="inline-flex items-center gap-2 rounded-full bg-white/15 text-white px-7 py-3.5 font-semibold border border-white/30 hover:bg-white/25 transition">Поширені питання</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer class="border-t border-ink/8">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 py-12 grid sm:grid-cols-[1.5fr_1fr_1fr] gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 font-display font-extrabold text-ink">
+        <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-green to-leaf text-white shadow-glow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </span>
+        Зірка Вишгорода
+      </div>
+      <p class="mt-4 text-muted max-w-xs">Сайт ОСББ «Зірка Вишгорода» — створюємо об'єднання нашого будинку разом.</p>
+      <p class="mt-3 text-muted text-sm break-all">osbb.zirka.vyshgoroda@gmail.com · +38 093 758 81 46</p>
+    </div>
+    <div>
+      <div class="font-display font-bold mb-3">Розділи</div>
+      <ul class="space-y-2 text-muted text-sm">
+        <li><a href="#announce" class="hover:text-ink transition">Оголошення</a></li>
+        <li><a href="#roadmap" class="hover:text-ink transition">Порядок денний</a></li>
+        <li><a href="#registration" class="hover:text-ink transition">Реєстрація</a></li>
+        <li><a href="#docs" class="hover:text-ink transition">Документи</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="font-display font-bold mb-3">Збори</div>
+      <ul class="space-y-2 text-muted text-sm">
+        <li>13 червня 2026, 10:00</li>
+        <li>Реєстрація з 09:45</li>
+        <li>вул. Шолуденко 17А, м. Вишгород</li>
+        <li>конференц-зал «Вишеград»</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-ink/8">
+    <div class="mx-auto max-w-6xl px-5 sm:px-8 py-5 text-sm text-muted flex flex-col sm:flex-row gap-2 justify-between">
+      <span>© 2026 ОСББ «Зірка Вишгорода»</span>
+      <span>Зроблено з турботою про сусідів 🌱</span>
+    </div>
+  </div>
 </footer>
 
-<style>
-  .faq-section{background:#eef0fa;padding:clamp(52px,8vw,84px) 18px}
-  .faq-container{max-width:820px;margin:0 auto}
-  .faq-header{text-align:center;margin-bottom:40px}
-  .faq-title{font-size:clamp(26px,4vw,40px);margin:0 0 10px;color:var(--ink)}
-  .faq-subtitle{font-family:var(--font);color:var(--muted);font-size:16px;margin:0}
-  .faq-group{margin-bottom:32px}
-  .faq-group-title{font-family:var(--font);font-weight:800;font-size:13px;letter-spacing:.07em;text-transform:uppercase;
-    color:var(--gc,var(--brand));margin:0 0 14px;display:inline-flex;align-items:center;gap:10px}
-  .faq-group-title::before{content:"";width:26px;height:4px;border-radius:3px;background:var(--gc,var(--brand))}
-  .faq-item{background:var(--surface);border:1px solid var(--line);border-radius:16px;margin-bottom:12px;
-    box-shadow:var(--sh-sm);overflow:hidden;transition:box-shadow .2s ease,border-color .2s ease}
-  .faq-item[open]{box-shadow:var(--sh-md);border-color:color-mix(in srgb,var(--gc,var(--brand)) 35%,var(--line))}
-  .faq-question{font-family:var(--font);cursor:pointer;padding:18px 52px 18px 22px;font-weight:700;font-size:16px;
-    color:var(--ink);list-style:none;position:relative;user-select:none}
-  .faq-question::-webkit-details-marker{display:none}
-  .faq-question::after{content:"";position:absolute;right:22px;top:50%;width:9px;height:9px;
-    border-right:2.4px solid var(--gc,var(--brand));border-bottom:2.4px solid var(--gc,var(--brand));
-    transform:translateY(-75%) rotate(45deg);transition:transform .25s ease}
-  .faq-item[open] .faq-question::after{transform:translateY(-25%) rotate(-135deg)}
-  .faq-answer{padding:0 22px 20px;color:#3a3f5c;line-height:1.65;font-size:15px;overflow:hidden;
-    transition:height .36s cubic-bezier(.4,0,.2,1)}
-  .faq-answer p{margin:0 0 12px}.faq-answer ul{margin:0 0 12px;padding-left:20px}.faq-answer li{margin-bottom:6px}
-  .faq-answer strong{color:var(--ink)}
-  .legal-details{margin-top:16px;border-top:1px dashed var(--line);padding-top:12px}
-  .legal-details>summary{cursor:pointer;font-size:13px;color:var(--gc,var(--brand));font-weight:700;user-select:none;list-style:none}
-  .legal-details>summary::-webkit-details-marker{display:none}
-  .legal-details>summary::before{content:"";display:inline-block;width:14px;height:2px;border-radius:2px;
-    background:var(--gc,var(--brand));margin-right:8px;vertical-align:middle;opacity:.8}
-  .legal-content{margin-top:10px;background:#f6f7fc;border-radius:12px;padding:14px 16px;font-size:13px;color:var(--muted);
-    overflow:hidden;transition:height .32s cubic-bezier(.4,0,.2,1)}
-  .legal-content p{margin:0 0 8px}.legal-content strong{color:var(--ink)}
-  .placeholder{color:#9aa0bf;font-style:italic;text-align:center;padding:22px;
-    border:1px dashed var(--line);border-radius:14px;background:#f6f7fc}
-  .faq-footer-note{text-align:center;margin-top:30px;color:var(--muted);font-size:14px}
-  @media (max-width:600px){
-    .faq-question{padding:16px 46px 16px 18px;font-size:15px}.faq-answer{padding:0 18px 18px;font-size:14px}
-    .rm{padding-left:56px}.rm-num{width:42px;height:42px}
-  }
-  .faq-section,.faq-section *{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-touch-callout:none}
-  .faq-section *{-webkit-tap-highlight-color:transparent}
-  @media print{.faq-section{filter:blur(8px);pointer-events:none}}
-</style>
-
 <script>
-  (function(){
-    var faq=document.querySelector('.faq-section'); if(!faq) return;
-    faq.addEventListener('contextmenu',function(e){e.preventDefault();});
-    ['copy','cut'].forEach(function(ev){faq.addEventListener(ev,function(e){e.preventDefault();});});
-    faq.addEventListener('dragstart',function(e){e.preventDefault();});
-    document.addEventListener('keydown',function(e){
-      if((e.ctrlKey||e.metaKey)&&['c','x','a','s','p','u'].indexOf((e.key||'').toLowerCase())!==-1){e.preventDefault();}
-      if(e.key==='F12'){e.preventDefault();}
-      if((e.ctrlKey||e.metaKey)&&e.shiftKey&&['i','j','c'].indexOf((e.key||'').toLowerCase())!==-1){e.preventDefault();}
-    });
-    document.addEventListener('copy',function(e){
-      var s=window.getSelection();
-      if(faq.contains(document.activeElement)||(s&&s.anchorNode&&faq.contains(s.anchorNode))){
-        try{e.clipboardData.setData('text/plain','');}catch(_){} e.preventDefault();
-      }
-    });
-  })();
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileMenu');
+  toggle?.addEventListener('click', () => menu.classList.toggle('hidden'));
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
 
-  /* smooth slide accordion */
-  (function(){
-    function enhance(sel,contentSel){
-      document.querySelectorAll(sel).forEach(function(d){
-        var c=d.querySelector(contentSel), s=d.querySelector('summary'); if(!c||!s) return;
-        s.addEventListener('click',function(e){
-          e.preventDefault(); if(d.dataset.an) return; d.dataset.an='1';
-          var fin=function(){c.style.height='';delete d.dataset.an;};
-          if(d.open){ c.style.height=c.scrollHeight+'px'; c.getBoundingClientRect(); c.style.height='0px';
-            c.addEventListener('transitionend',function t(){d.open=false;fin();c.removeEventListener('transitionend',t);},{once:true});
-          } else { d.open=true; var h=c.scrollHeight; c.style.height='0px'; c.getBoundingClientRect(); c.style.height=h+'px';
-            c.addEventListener('transitionend',function t(){fin();c.removeEventListener('transitionend',t);},{once:true}); }
-        });
-      });
-    }
-    enhance('.faq-item','.faq-answer'); enhance('.legal-details','.legal-content');
-  })();
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // FAQ: one item open at a time per group (native <details>)
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('toggle', () => {
+      if (!item.open) return;
+      const group = item.parentElement;
+      group.querySelectorAll('.faq-item[open]').forEach(other => { if (other !== item) other.open = false; });
+    });
+  });
 </script>
-
 </body>
 </html>
