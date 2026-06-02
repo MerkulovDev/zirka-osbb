@@ -125,7 +125,8 @@
       <div id="grantorPerson">
       <div class="field"><label>ПІБ повністю <span class="req">*</span></label>
         <input type="text" id="grantorPib" placeholder="Іваненко Іван Іванович"></div>
-      <p class="addrlbl">Адреса реєстрації (місце проживання)</p>
+      <p class="addrlbl" style="margin-bottom:2px">Адреса реєстрації (місце проживання)</p>
+      <p style="margin:0 0 8px"><button type="button" class="linkbtn" id="g_copy">= адреса як у реквізитах будинку</button></p>
       <div class="row">
         <div class="field w-sm"><label>Тип</label>
           <select id="g_stype">
@@ -196,7 +197,8 @@
       <legend>4. Представник (повірена особа)</legend>
       <div class="field"><label>ПІБ повністю <span class="req">*</span></label>
         <input type="text" id="repPib" placeholder="Петренко Петро Петрович"></div>
-      <p class="addrlbl">Адреса проживання</p>
+      <p class="addrlbl" style="margin-bottom:2px">Адреса проживання</p>
+      <p style="margin:0 0 8px"><button type="button" class="linkbtn" id="r_copy">= адреса як у реквізитах будинку</button></p>
       <div class="row">
         <div class="field w-sm"><label>Тип</label>
           <select id="r_stype">
@@ -33552,16 +33554,17 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
     sel.addEventListener("change", upd); upd();
   }
 
-  // copy building requisites into an object's address fields
-  function copyBuildingAddr(block){
+  // copy building requisites into an address block; get(key)->element (or null)
+  var BUILDING_MAP = { stype:"b_stype", street:"b_street", house:"houseNo",
+                       nptype:"b_nptype", np:"b_np", district:"b_district", region:"b_region", index:"b_index" };
+  function copyBuildingInto(get){
     var bv = function(id){ var e=document.getElementById(id); return e?e.value:""; };
-    var map = { stype:"b_stype", street:"b_street", house:"houseNo",
-                nptype:"b_nptype", np:"b_np", district:"b_district", region:"b_region", index:"b_index" };
-    Object.keys(map).forEach(function(k){
-      var el = block.querySelector(".oa-"+k);
-      if(el) el.value = bv(map[k]);
+    Object.keys(BUILDING_MAP).forEach(function(k){
+      var el = get(k);
+      if(el) el.value = bv(BUILDING_MAP[k]);
     });
   }
+  function copyBuildingAddr(block){ copyBuildingInto(function(k){ return block.querySelector(".oa-"+k); }); }
 
   function addObject(){
     objIndex++;
@@ -33607,6 +33610,14 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
   }
   document.querySelectorAll('input[name="entity"]').forEach(function(r){ r.addEventListener("change", applyEntity); });
   applyEntity();
+
+  // "copy from building" buttons for grantor / representative addresses
+  [["g_copy","g_"],["r_copy","r_"]].forEach(function(pair){
+    var btn = document.getElementById(pair[0]);
+    if(btn) btn.addEventListener("click", function(){
+      copyBuildingInto(function(k){ return document.getElementById(pair[1]+k); });
+    });
+  });
 
   // date: default to today (year text is fixed "дві тисячі двадцять шостого")
   var MONTHS_GEN = ["січня","лютого","березня","квітня","травня","червня","липня","серпня","вересня","жовтня","листопада","грудня"];
