@@ -23,6 +23,7 @@
   label{display:block;font-size:14px;font-weight:500;margin:0 0 5px}
   label .req{color:var(--err)}
   .hint{font-size:12.5px;color:var(--muted);margin:3px 0 0;font-weight:400}
+  .addrlbl{font-size:13px;font-weight:700;color:var(--muted);margin:6px 0 8px;text-transform:uppercase;letter-spacing:.02em}
   input[type=text],textarea,select{
     width:100%;padding:11px 12px;font-size:16px;border:1px solid var(--line);border-radius:9px;
     background:#fff;color:var(--ink);font-family:inherit}
@@ -55,6 +56,8 @@
     padding:12px 14px;margin:14px 0 0;font-size:14px}
   .errbox ul{margin:6px 0 0;padding-left:18px}
   .note{font-size:12.5px;color:var(--muted);margin-top:14px;text-align:center}
+  .w-sm{flex:0 0 96px}
+  .w-md{flex:0 0 130px}
 </style>
 </head>
 <body>
@@ -67,24 +70,73 @@
     <fieldset>
       <legend>1. Реквізити будинку</legend>
       <div class="row">
-        <div class="field"><label>Номер будинку <span class="req">*</span></label>
-          <input type="text" id="houseNo" value="18А" placeholder="18А"></div>
+        <div class="field w-sm"><label>Тип</label>
+          <select id="b_stype">
+            <option>вул.</option><option>просп.</option><option>бульв.</option><option>пров.</option>
+            <option>пл.</option><option>проїзд</option><option>шосе</option><option>наб.</option><option>тупик</option>
+          </select></div>
         <div class="field"><label>Вулиця <span class="req">*</span></label>
-          <input type="text" id="street" value="Шолуденка" placeholder="Шолуденка"></div>
+          <input type="text" id="b_street" value="Шолуденка" placeholder="Шолуденка"></div>
+        <div class="field w-md"><label>Будинок № <span class="req">*</span></label>
+          <input type="text" id="houseNo" value="18А" placeholder="18А"></div>
       </div>
-      <div class="field"><label>Повна адреса будинку <span class="req">*</span></label>
-        <input type="text" id="fullAddr" value="м. Вишгород, Вишгородський район, Київська область, 07302" placeholder="м. Вишгород, Вишгородський район, Київська область, 07302">
-        <p class="hint">Місто, район, область, індекс — підставляється в шапку та текст.</p></div>
-      <div class="field"><label>Місто (для дати документа) <span class="req">*</span></label>
-        <input type="text" id="city" value="Вишгород" placeholder="Вишгород"></div>
+      <div class="row">
+        <div class="field w-sm"><label>Тип</label>
+          <select id="b_nptype">
+            <option value="м.">місто</option><option value="с.">село</option><option value="смт">смт</option>
+          </select></div>
+        <div class="field"><label>Населений пункт <span class="req">*</span></label>
+          <input type="text" id="b_np" value="Вишгород" placeholder="Вишгород"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Район</label>
+          <input type="text" id="b_district" value="Вишгородський район" placeholder="Вишгородський район"></div>
+        <div class="field"><label>Область <span class="req">*</span></label>
+          <input type="text" id="b_region" value="Київська область" placeholder="Київська область"></div>
+      </div>
+      <div class="field" style="max-width:200px"><label>Індекс</label>
+        <input type="text" id="b_index" inputmode="numeric" value="07302" placeholder="07302"></div>
+      <p class="hint">Вулиця, номер, населений пункт — у шапку; населений пункт — також у дату.</p>
     </fieldset>
 
     <fieldset>
       <legend>2. Довіритель (хто видає довіреність)</legend>
       <div class="field"><label>ПІБ повністю <span class="req">*</span></label>
         <input type="text" id="grantorPib" placeholder="Іваненко Іван Іванович"></div>
-      <div class="field"><label>Адреса реєстрації (місце проживання) <span class="req">*</span></label>
-        <input type="text" id="grantorAddr" placeholder="вул. ..., буд. ..., кв. ..., місто, район, область, індекс"></div>
+      <p class="addrlbl">Адреса реєстрації (місце проживання)</p>
+      <div class="row">
+        <div class="field w-sm"><label>Тип</label>
+          <select id="g_stype">
+            <option>вул.</option><option>просп.</option><option>бульв.</option><option>пров.</option>
+            <option>пл.</option><option>проїзд</option><option>шосе</option><option>наб.</option><option>тупик</option>
+          </select></div>
+        <div class="field"><label>Вулиця <span class="req">*</span></label>
+          <input type="text" id="g_street" placeholder="Шолуденка"></div>
+      </div>
+      <div class="row">
+        <div class="field w-md"><label>Будинок <span class="req">*</span></label>
+          <input type="text" id="g_house" placeholder="18а"></div>
+        <div class="field w-md"><label>Корпус</label>
+          <input type="text" id="g_korp" placeholder=""></div>
+        <div class="field w-md"><label>Квартира</label>
+          <input type="text" id="g_apt" placeholder="30"></div>
+      </div>
+      <div class="row">
+        <div class="field w-sm"><label>Тип</label>
+          <select id="g_nptype">
+            <option value="м.">місто</option><option value="с.">село</option><option value="смт">смт</option>
+          </select></div>
+        <div class="field"><label>Населений пункт <span class="req">*</span></label>
+          <input type="text" id="g_np" placeholder="Вишгород"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Район</label>
+          <input type="text" id="g_district" placeholder="Вишгородський район"></div>
+        <div class="field"><label>Область <span class="req">*</span></label>
+          <input type="text" id="g_region" placeholder="Київська область"></div>
+      </div>
+      <div class="field" style="max-width:200px"><label>Індекс</label>
+        <input type="text" id="g_index" inputmode="numeric" placeholder="07302"></div>
     </fieldset>
 
     <fieldset>
@@ -121,9 +173,40 @@
       <legend>4. Представник (повірена особа)</legend>
       <div class="field"><label>ПІБ повністю <span class="req">*</span></label>
         <input type="text" id="repPib" placeholder="Петренко Петро Петрович"></div>
-      <div class="field"><label>Адреса проживання <span class="req">*</span></label>
-        <input type="text" id="repAddr" placeholder="вул. Шолуденка, 18а, кв. 30, м. Вишгород, Вишгородський район, Київська область, 07302">
-        <p class="hint">Формат: вулиця, будинок, кв., місто, район, область, індекс.</p></div>
+      <p class="addrlbl">Адреса проживання</p>
+      <div class="row">
+        <div class="field w-sm"><label>Тип</label>
+          <select id="r_stype">
+            <option>вул.</option><option>просп.</option><option>бульв.</option><option>пров.</option>
+            <option>пл.</option><option>проїзд</option><option>шосе</option><option>наб.</option><option>тупик</option>
+          </select></div>
+        <div class="field"><label>Вулиця <span class="req">*</span></label>
+          <input type="text" id="r_street" placeholder="Шолуденка"></div>
+      </div>
+      <div class="row">
+        <div class="field w-md"><label>Будинок <span class="req">*</span></label>
+          <input type="text" id="r_house" placeholder="18а"></div>
+        <div class="field w-md"><label>Корпус</label>
+          <input type="text" id="r_korp" placeholder=""></div>
+        <div class="field w-md"><label>Квартира</label>
+          <input type="text" id="r_apt" placeholder="30"></div>
+      </div>
+      <div class="row">
+        <div class="field w-sm"><label>Тип</label>
+          <select id="r_nptype">
+            <option value="м.">місто</option><option value="с.">село</option><option value="смт">смт</option>
+          </select></div>
+        <div class="field"><label>Населений пункт <span class="req">*</span></label>
+          <input type="text" id="r_np" placeholder="Вишгород"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Район</label>
+          <input type="text" id="r_district" placeholder="Вишгородський район"></div>
+        <div class="field"><label>Область <span class="req">*</span></label>
+          <input type="text" id="r_region" placeholder="Київська область"></div>
+      </div>
+      <div class="field" style="max-width:200px"><label>Індекс</label>
+        <input type="text" id="r_index" inputmode="numeric" placeholder="07302"></div>
     </fieldset>
 
     <fieldset>
@@ -167,12 +250,36 @@
         <label><input type="radio" name="" value="nonres"> Нежитлове приміщення</label>
       </div>
     </div>
+    <div class="field" style="max-width:160px"><label>Номер <span class="req">*</span></label>
+      <input type="text" class="o-num" placeholder="30"></div>
+    <p class="addrlbl">Адреса об'єкта</p>
     <div class="row">
-      <div class="field" style="flex:0 1 120px"><label>Номер <span class="req">*</span></label>
-        <input type="text" class="o-num" placeholder="30"></div>
-      <div class="field"><label>Адреса об'єкта <span class="req">*</span></label>
-        <input type="text" class="o-addr" placeholder="вул. Шолуденка, 18а, м. Вишгород, Вишгородський район, Київська область, 07302"></div>
+      <div class="field w-sm"><label>Тип</label>
+        <select class="oa-stype">
+          <option>вул.</option><option>просп.</option><option>бульв.</option><option>пров.</option>
+          <option>пл.</option><option>проїзд</option><option>шосе</option><option>наб.</option><option>тупик</option>
+        </select></div>
+      <div class="field"><label>Вулиця <span class="req">*</span></label>
+        <input type="text" class="oa-street" placeholder="Шолуденка"></div>
+      <div class="field w-md"><label>Будинок <span class="req">*</span></label>
+        <input type="text" class="oa-house" placeholder="18а"></div>
     </div>
+    <div class="row">
+      <div class="field w-sm"><label>Тип</label>
+        <select class="oa-nptype">
+          <option value="м.">місто</option><option value="с.">село</option><option value="смт">смт</option>
+        </select></div>
+      <div class="field"><label>Населений пункт <span class="req">*</span></label>
+        <input type="text" class="oa-np" placeholder="Вишгород"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>Район</label>
+        <input type="text" class="oa-district" placeholder="Вишгородський район"></div>
+      <div class="field"><label>Область <span class="req">*</span></label>
+        <input type="text" class="oa-region" placeholder="Київська область"></div>
+    </div>
+    <div class="field" style="max-width:200px"><label>Індекс</label>
+      <input type="text" class="oa-index" inputmode="numeric" placeholder="07302"></div>
     <div class="field"><label>Правовстановлюючий документ <span class="req">*</span></label>
       <select class="o-doctype">
         <option value="v1">Витяг з Державного реєстру речових прав (ДРРП)</option>
@@ -33401,6 +33508,10 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
   var D = docx; // global from embedded IIFE build
   var FONT = "Times New Roman", SIZE = 24; // 12pt
 
+  var STREET_GEN = {"вул.":"вулиці","просп.":"проспекту","бульв.":"бульвару","пров.":"провулку",
+                    "пл.":"площі","проїзд":"проїзду","шосе":"шосе","наб.":"набережній","тупик":"тупику"};
+  var NP_WORD = {"м.":"місто","с.":"село","смт":"селище міського типу"};
+
   // ---------- form dynamics ----------
   var objIndex = 0;
   var objectsBox = document.getElementById("objects");
@@ -33422,11 +33533,9 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
     var node = tpl.content.cloneNode(true);
     var block = node.querySelector(".obj");
     block.querySelector(".obj-title").textContent = "Приміщення № " + objIndex;
-    // unique radio group name per block
     var gname = "objType" + objIndex;
     block.querySelectorAll('input[type=radio][value="apartment"],input[type=radio][value="nonres"]').forEach(function(r){ r.name = gname; });
-    var del = block.querySelector(".obj-del");
-    del.addEventListener("click", function(){ block.remove(); renumber(); });
+    block.querySelector(".obj-del").addEventListener("click", function(){ block.remove(); renumber(); });
     wireDocType(block);
     objectsBox.appendChild(block);
     renumber();
@@ -33439,7 +33548,7 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
     });
   }
   document.getElementById("addObj").addEventListener("click", addObject);
-  addObject(); // first one
+  addObject();
 
   // passport kind toggle
   var passBook = document.getElementById("passBook"), passId = document.getElementById("passId");
@@ -33455,11 +33564,33 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
   function val(id){ var e=document.getElementById(id); return e ? e.value.trim() : ""; }
   function mark(el,bad){ if(el) el.classList.toggle("invalid", !!bad); }
   function clearMarks(){ document.querySelectorAll(".invalid").forEach(function(e){e.classList.remove("invalid");}); }
-
   function need(el, label, errs){
     var v = el ? el.value.trim() : "";
     if(!v){ mark(el,true); errs.push(label); return false; }
     mark(el,false); return true;
+  }
+
+  // address assembly: join non-empty parts with ", "
+  function assembleAddr(get, includeApt){
+    var p = [];
+    var st = get("stype"), street = get("street");
+    if(street) p.push((st ? st+" " : "") + street);
+    var h = get("house"); if(h) p.push(h);
+    var k = get("korp");  if(k) p.push("корп. " + k);
+    if(includeApt){ var a = get("apt"); if(a) p.push("кв. " + a); }
+    var npt = get("nptype"), np = get("np");
+    if(np) p.push((npt ? npt+" " : "") + np);
+    var dist = get("district"); if(dist) p.push(dist);
+    var reg  = get("region");   if(reg)  p.push(reg);
+    var idx  = get("index");    if(idx)  p.push(idx);
+    return p.join(", ");
+  }
+  // validate required core of an address; get(key)->value, q(key)->element
+  function needAddr(prefixLabel, q, errs){
+    need(q("street"),  prefixLabel+": вулиця",   errs);
+    need(q("house"),   prefixLabel+": будинок",  errs);
+    need(q("np"),      prefixLabel+": нас. пункт",errs);
+    need(q("region"),  prefixLabel+": область",  errs);
   }
 
   // ---------- collect + validate ----------
@@ -33468,13 +33599,25 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
     var errs = [];
     var byId = function(id){ return document.getElementById(id); };
 
+    // building
     need(byId("houseNo"),"Номер будинку",errs);
-    need(byId("street"),"Вулиця",errs);
-    need(byId("fullAddr"),"Повна адреса будинку",errs);
-    need(byId("city"),"Місто (для дати)",errs);
-    need(byId("grantorPib"),"ПІБ довірителя",errs);
-    need(byId("grantorAddr"),"Адреса реєстрації довірителя",errs);
+    need(byId("b_street"),"Вулиця будинку",errs);
+    need(byId("b_np"),"Населений пункт будинку",errs);
+    need(byId("b_region"),"Область будинку",errs);
+    var gen = STREET_GEN[val("b_stype")] || "вулиці";
+    var bTail = [ (val("b_nptype") ? val("b_nptype")+" " : "")+val("b_np"), val("b_district"), val("b_region") ]
+                  .filter(Boolean).join(", ");
+    var headerLine4 = "по " + gen + " " + val("b_street") + ", " + bTail;
+    var dateNp = (NP_WORD[val("b_nptype")] || "місто") + " " + val("b_np");
 
+    // grantor
+    need(byId("grantorPib"),"ПІБ довірителя",errs);
+    var gGet = function(k){ return val("g_"+k); };
+    var gQ   = function(k){ return byId("g_"+k); };
+    needAddr("Адреса довірителя", gQ, errs);
+    var grantorAddr = assembleAddr(gGet, true);
+
+    // passport
     var docKind = document.querySelector('input[name="docKind"]:checked').value;
     var passport = "";
     if(docKind==="book"){
@@ -33491,19 +33634,26 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
                                 ", унікальний номер запису в ЄДДР (УНЗР): "+val("idUnzr");
     }
 
+    // representative
     need(byId("repPib"),"ПІБ представника",errs);
-    need(byId("repAddr"),"Адреса представника",errs);
+    var rGet = function(k){ return val("r_"+k); };
+    var rQ   = function(k){ return byId("r_"+k); };
+    needAddr("Адреса представника", rQ, errs);
+    var repAddr = assembleAddr(rGet, true);
 
+    // objects
     var objects = [];
-    var blocks = objectsBox.querySelectorAll(".obj");
-    blocks.forEach(function(b,i){
+    objectsBox.querySelectorAll(".obj").forEach(function(b,i){
       var idx = i+1;
       var type = b.querySelector('input[type=radio]:checked').value;
-      var numEl=b.querySelector(".o-num"), addrEl=b.querySelector(".o-addr");
-      var okN=need(numEl,"Об'єкт "+idx+": номер",errs);
-      var okA=need(addrEl,"Об'єкт "+idx+": адреса",errs);
-      var dtype=b.querySelector(".o-doctype").value;
-      var docStr="";
+      need(b.querySelector(".o-num"),"Об'єкт "+idx+": номер",errs);
+      var oGet = function(k){ var e=b.querySelector(".oa-"+k); return e ? e.value.trim() : ""; };
+      var oQ   = function(k){ return b.querySelector(".oa-"+k); };
+      needAddr("Об'єкт "+idx, oQ, errs);
+      var addr = assembleAddr(oGet, false);
+
+      var dtype = b.querySelector(".o-doctype").value;
+      var docStr = "";
       if(dtype==="v1"){
         var x=need(b.querySelector(".v1-idx"),"Об'єкт "+idx+": індексний номер",errs),
             y=need(b.querySelector(".v1-date"),"Об'єкт "+idx+": дата витягу",errs),
@@ -33526,15 +33676,15 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
         var t=need(b.querySelector(".v3-text"),"Об'єкт "+idx+": опис документа",errs);
         if(t) docStr=b.querySelector(".v3-text").value.trim();
       }
-      objects.push({ type:type, num:okN?numEl.value.trim():"", addr:okA?addrEl.value.trim():"", docStr:docStr });
+      objects.push({ type:type, num:b.querySelector(".o-num").value.trim(), addr:addr, docStr:docStr });
     });
 
     if(errs.length) return { errs:errs };
 
     return {
-      houseNo:val("houseNo"), street:val("street"), fullAddr:val("fullAddr"), city:val("city"),
-      grantorPib:val("grantorPib"), grantorAddr:val("grantorAddr"), passport:passport,
-      repPib:val("repPib"), repAddr:val("repAddr"), objects:objects,
+      houseNo:val("houseNo"), headerLine4:headerLine4, dateNp:dateNp,
+      grantorPib:val("grantorPib"), grantorAddr:grantorAddr, passport:passport,
+      repPib:val("repPib"), repAddr:repAddr, objects:objects,
       dDay:val("dDay"), dMonth:val("dMonth")
     };
   }
@@ -33561,27 +33711,22 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
 
   function buildDoc(d){
     var p = [];
-    // --- Шапка ---
     p.push(P(run("Довіреність",{bold:true}), {align:C, after:0}));
     p.push(P(run("на право участі та голосування на установчих зборах співвласників ",{bold:true}), {align:C, after:0}));
     p.push(P(run("багатоквартирного будинку №"+d.houseNo+", ",{bold:true}), {align:C, after:0}));
-    p.push(P(run("по вулиці "+d.street+", "+d.fullAddr,{bold:true}), {align:C, after:240}));
+    p.push(P(run(d.headerLine4,{bold:true}), {align:C, after:240}));
 
-    // --- Дата ---
     var day = d.dDay || "__", month = d.dMonth || "______";
-    p.push(P(run("місто "+d.city+" «"+day+"» "+month+" дві тисячі двадцять шостого року.",{bold:true}), {align:C, after:240}));
+    p.push(P(run(d.dateNp+" «"+day+"» "+month+" дві тисячі двадцять шостого року.",{bold:true}), {align:C, after:240}));
 
-    // --- Довіритель ---
     p.push(P(run("Я, "+d.grantorPib+", адреса реєстрації (місце проживання): "+d.grantorAddr+",",{bold:true}), {align:J}));
     p.push(P(run("паспорт: "+d.passport+",",{bold:true}), {align:J}));
     p.push(P(run("попередньо ознайомившись із загальними вимогами, додержання яких є необхідним для чинності правочину, повністю усвідомлюючи значення своїх дій та згідно вільного волевиявлення, котре відповідає моїй внутрішній волі, на підтвердження та на виконання умов попередньо укладеного усно з представником договору доручення відповідно до вимог ст. ст. 244, 245, 1007 Цивільного кодексу України, цією довіреністю",{bold:true}), {align:J}));
 
     p.push(P(run("УПОВНОВАЖУЮ:",{bold:true}), {align:C, after:200}));
 
-    // --- Представник ---
     p.push(P(run(d.repPib+", що мешкає за адресою: "+d.repAddr+" (надалі – представник)",{bold:true}), {align:J}));
 
-    // --- Об'єкти: мета винесена наперед (один раз) ---
     p.push(P(run("представляти мої інтереси та діяти від мого імені на установчих зборах співвласників цього багатоквартирного будинку як власника:",{bold:true}), {align:J}));
 
     d.objects.forEach(function(o){
@@ -33589,7 +33734,6 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
       p.push(P(run("Документ про право власності на квартиру (приміщення): "+o.docStr,{bold:true}), {align:J}));
     });
 
-    // --- Повноваження ---
     p.push(P(run("Для цього представнику надається право від мого імені:",{bold:true}), {align:J}));
     var powers = [
       "отримувати від мого імені повідомлення про проведення зборів; ",
@@ -33602,10 +33746,7 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
     ];
     powers.forEach(function(t){ p.push(P(run(t,{bold:true}), {align:J, bullet:true, after:0})); });
 
-    // --- Завершення ---
     p.push(P(run("Довіреність видана без права передоручення, строком один рік.",{bold:true}), {align:C, after:400}));
-
-    // --- Підпис ---
     p.push(P(run(d.grantorPib+"                    ____________"), {align:J}));
 
     return new D.Document({
@@ -33628,7 +33769,7 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
     result.innerHTML = "";
     var d = collect();
     if(d.errs){
-      var html = '<div class="errbox"><b>Заповніть обов\'язкові поля:</b><ul>';
+      var html = '<div class="errbox"><b>Заповніть обовʼязкові поля:</b><ul>';
       d.errs.forEach(function(m){ html += "<li>"+m+"</li>"; });
       html += "</ul></div>";
       result.innerHTML = html;
