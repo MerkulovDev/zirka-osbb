@@ -44,7 +44,11 @@
 
 <style>
   html { scroll-behavior: smooth; }
-  body { background:#F2F8F1; }
+  body {
+    background:#F2F8F1;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;
+    -webkit-touch-callout:none; -webkit-tap-highlight-color:transparent;
+  }
 
   .blob { position:absolute; border-radius:9999px; filter:blur(70px); opacity:.5; z-index:0; pointer-events:none; }
 
@@ -987,6 +991,11 @@
 </footer>
 
 <script>
+  // block text selection / copying
+  ['contextmenu','copy','cut','selectstart','dragstart'].forEach(function(ev){
+    document.addEventListener(ev, function(e){ e.preventDefault(); });
+  });
+
   const toggle = document.getElementById('navToggle');
   const menu = document.getElementById('mobileMenu');
   toggle?.addEventListener('click', () => menu.classList.toggle('hidden'));
