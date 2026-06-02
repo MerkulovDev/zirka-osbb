@@ -4,69 +4,112 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Генератор довіреності — установчі збори ОСББ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f4f6f8; --card:#fff; --line:#d9dee3; --ink:#1c2733; --muted:#5b6b7b;
-    --accent:#1f6feb; --accent-d:#1859c4; --ok:#1a7f37; --okbg:#e8f5ec; --err:#c0392b;
-    --radius:12px;
+    --bg:#F2F8F1; --card:#fff; --line:#E2EAE0; --ink:#1E2A22; --muted:#5E6F63;
+    --accent:#3DA66E; --accent-d:#2C8456; --leaf:#6CC08A; --honey:#F4C05B;
+    --ok:#2C8456; --okbg:#E6F4EA; --err:#C2533A;
+    --radius:18px;
+    --font:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --display:'Manrope',var(--font);
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-       background:var(--bg);color:var(--ink);line-height:1.5;font-size:16px;-webkit-text-size-adjust:100%}
-  .wrap{max-width:760px;margin:0 auto;padding:16px 14px 64px}
-  h1{font-size:21px;margin:6px 0 4px}
-  .sub{color:var(--muted);font-size:14px;margin:0 0 18px}
+  body{margin:0;font-family:var(--font);background:var(--bg);color:var(--ink);
+       line-height:1.55;font-size:16px;-webkit-text-size-adjust:100%;
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:780px;margin:0 auto;padding:24px 16px 80px}
+
+  /* top bar */
+  .topbar{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+  .brand{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:800;
+    color:var(--ink);text-decoration:none;font-size:16px}
+  .brand .mark{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;
+    background:linear-gradient(135deg,var(--accent),var(--leaf));color:#fff;
+    box-shadow:0 8px 22px -8px rgba(61,166,110,.6)}
+  .back{margin-left:auto;color:var(--accent-d);text-decoration:none;font-size:14px;font-weight:600}
+  .back:hover{text-decoration:underline}
+
+  /* hero */
+  .hero{background:linear-gradient(135deg,#ffffff,#E8F4E7);border:1px solid var(--line);
+    border-radius:26px;padding:26px 24px;margin:0 0 22px;position:relative;overflow:hidden;
+    box-shadow:0 18px 50px -28px rgba(28,64,40,.28)}
+  .hero .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.06em;color:var(--accent-d)}
+  .hero .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  h1{font-family:var(--display);font-size:clamp(22px,4vw,30px);font-weight:800;letter-spacing:-.01em;
+    margin:10px 0 6px;line-height:1.14}
+  .sub{color:var(--muted);font-size:15px;margin:0;max-width:52ch}
+  .sub b{color:var(--ink)}
+
+  /* fieldsets */
   fieldset{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
-           margin:0 0 16px;padding:14px 14px 4px}
-  legend{font-weight:600;font-size:15px;padding:0 6px;color:var(--ink)}
-  .field{margin:0 0 12px}
-  label{display:block;font-size:14px;font-weight:500;margin:0 0 5px}
+           margin:0 0 16px;padding:20px 20px 8px;box-shadow:0 16px 44px -32px rgba(28,64,40,.32)}
+  legend{font-family:var(--display);font-weight:700;font-size:15px;padding:4px 14px;color:var(--accent-d);
+    background:#E8F4E7;border:1px solid var(--line);border-radius:999px;margin-left:-2px}
+  .field{margin:0 0 14px}
+  label{display:block;font-size:14px;font-weight:600;margin:0 0 6px;color:var(--ink)}
   label .req{color:var(--err)}
-  .hint{font-size:12.5px;color:var(--muted);margin:3px 0 0;font-weight:400}
-  .addrlbl{font-size:13px;font-weight:700;color:var(--muted);margin:6px 0 8px;text-transform:uppercase;letter-spacing:.02em}
+  .hint{font-size:12.5px;color:var(--muted);margin:4px 0 0;font-weight:400;line-height:1.45}
+  .addrlbl{font-size:12px;font-weight:700;color:var(--accent-d);margin:10px 0 8px;
+    text-transform:uppercase;letter-spacing:.04em}
   input[type=text],textarea,select{
-    width:100%;padding:11px 12px;font-size:16px;border:1px solid var(--line);border-radius:9px;
-    background:#fff;color:var(--ink);font-family:inherit}
-  textarea{min-height:64px;resize:vertical}
+    width:100%;padding:12px 13px;font-size:16px;border:1px solid var(--line);border-radius:12px;
+    background:#fff;color:var(--ink);font-family:inherit;transition:border-color .15s,box-shadow .15s}
+  textarea{min-height:72px;resize:vertical}
   input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent);
-    box-shadow:0 0 0 3px rgba(31,111,235,.15)}
-  .invalid{border-color:var(--err)!important;box-shadow:0 0 0 3px rgba(192,57,43,.13)!important}
-  .row{display:flex;gap:10px;flex-wrap:wrap}
-  .row>.field{flex:1 1 150px;margin-bottom:12px}
+    box-shadow:0 0 0 4px rgba(61,166,110,.16)}
+  .invalid{border-color:var(--err)!important;box-shadow:0 0 0 4px rgba(194,83,58,.15)!important}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>.field{flex:1 1 150px;margin-bottom:14px}
   .radios{display:flex;gap:10px;flex-wrap:wrap}
-  .radios label{display:flex;align-items:center;gap:7px;font-weight:500;
-    border:1px solid var(--line);border-radius:9px;padding:9px 12px;cursor:pointer;margin:0;flex:1 1 140px}
-  .radios input{width:auto;margin:0}
-  .radios label:has(input:checked){border-color:var(--accent);background:rgba(31,111,235,.07)}
-  .obj{border:1px solid var(--line);border-radius:var(--radius);padding:12px 12px 2px;margin:0 0 12px;
-       background:#fafbfc;position:relative}
-  .obj h3{font-size:14px;margin:0 0 10px;color:var(--accent-d)}
-  .obj-del{position:absolute;top:10px;right:10px;background:none;border:none;color:var(--err);
+  .radios label{display:flex;align-items:center;gap:8px;font-weight:600;
+    border:1px solid var(--line);border-radius:12px;padding:11px 14px;cursor:pointer;margin:0;flex:1 1 150px;
+    transition:border-color .15s,background .15s}
+  .radios input{width:auto;margin:0;accent-color:var(--accent)}
+  .radios label:has(input:checked){border-color:var(--accent);background:rgba(61,166,110,.09)}
+  .obj{border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px 4px;margin:0 0 14px;
+       background:#FAFCF9;position:relative}
+  .obj h3{font-family:var(--display);font-size:15px;margin:0 0 12px;color:var(--accent-d);font-weight:700}
+  .obj-del{position:absolute;top:12px;right:12px;background:none;border:none;color:var(--err);
     font-size:13px;cursor:pointer;padding:4px;font-weight:600}
-  .btn{display:inline-block;border:none;border-radius:10px;padding:13px 18px;font-size:15px;
-    font-weight:600;cursor:pointer;font-family:inherit}
-  .btn-add{background:#eef3fb;color:var(--accent-d);border:1px dashed var(--accent);width:100%}
-  .btn-main{background:var(--accent);color:#fff;width:100%;font-size:17px;padding:15px}
-  .btn-main:active{background:var(--accent-d)}
+  .btn{display:inline-block;border:none;border-radius:14px;padding:14px 18px;font-size:15px;
+    font-weight:700;cursor:pointer;font-family:var(--display);
+    transition:transform .12s,box-shadow .15s,background .15s}
+  .btn-add{background:#E8F4E7;color:var(--accent-d);border:1.5px dashed var(--accent);width:100%}
+  .btn-add:hover{background:#DEEFDD}
+  .btn-main{background:var(--accent);color:#fff;width:100%;font-size:17px;padding:16px;margin-top:4px;
+    box-shadow:0 14px 34px -12px rgba(61,166,110,.6)}
+  .btn-main:hover{background:var(--accent-d)}
+  .btn-main:active{transform:translateY(1px)}
   .hidden{display:none!important}
-  .ok{background:var(--okbg);border:1px solid #b7e0c2;color:var(--ok);border-radius:10px;
-    padding:13px 14px;margin:14px 0 0;font-size:14.5px}
-  .ok b{display:block;margin-bottom:3px}
-  .errbox{background:#fbeceb;border:1px solid #f0c3bf;color:var(--err);border-radius:10px;
-    padding:12px 14px;margin:14px 0 0;font-size:14px}
+  .ok{background:var(--okbg);border:1px solid #BCE3C7;color:var(--ok);border-radius:14px;
+    padding:14px 16px;margin:16px 0 0;font-size:14.5px}
+  .ok b{display:block;margin-bottom:3px;font-family:var(--display)}
+  .errbox{background:#FBECE8;border:1px solid #F0CBC1;color:var(--err);border-radius:14px;
+    padding:13px 16px;margin:16px 0 0;font-size:14px}
   .errbox ul{margin:6px 0 0;padding-left:18px}
-  .note{font-size:12.5px;color:var(--muted);margin-top:14px;text-align:center}
+  .note{font-size:12.5px;color:var(--muted);margin-top:16px;text-align:center}
   .w-sm{flex:0 0 96px}
   .w-md{flex:0 0 130px}
-  .linkbtn{background:none;border:none;color:var(--accent);font-size:13px;font-weight:600;
+  .linkbtn{background:none;border:none;color:var(--accent-d);font-size:13px;font-weight:600;
     cursor:pointer;padding:2px 0;font-family:inherit;text-decoration:underline}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <p style="margin:0 0 10px"><a href="./" style="color:var(--accent);text-decoration:none;font-size:14px;font-weight:600">← На головну</a></p>
-  <h1>Довіреність на участь в установчих зборах ОСББ</h1>
-  <p class="sub">Заповніть поля — документ <b>.docx</b> сформується у вашому браузері. Нічого не надсилається на сервер.</p>
+  <div class="topbar">
+    <a href="./" class="brand"><span class="mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>Зірка Вишгорода</a>
+    <a href="./" class="back">← На головну</a>
+  </div>
+
+  <div class="hero">
+    <span class="eyebrow">Документ для зборів</span>
+    <h1>Довіреність на участь в установчих зборах ОСББ</h1>
+    <p class="sub">Заповніть поля — документ <b>.docx</b> сформується просто у вашому браузері. Нічого не надсилається на сервер.</p>
+  </div>
 
   <form id="form" novalidate>
 
@@ -353,6 +396,7 @@
 </template>
 
 <script id="docxlib">
+
 var docx = (function(exports) {
 	Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 	//#region \0rolldown/runtime.js
