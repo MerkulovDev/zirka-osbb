@@ -85,6 +85,10 @@
   .btn-main:hover{background:var(--accent-d)}
   .btn-main:active{transform:translateY(1px)}
   .hidden{display:none!important}
+  .byhand{display:flex;align-items:center;gap:8px;margin:2px 0 14px;font-weight:600;font-size:13.5px;
+    color:var(--accent-d);cursor:pointer;border:1px dashed var(--line);border-radius:12px;
+    padding:11px 13px;background:#FAFCF9}
+  .byhand input{width:auto;margin:0;accent-color:var(--accent)}
   .ok{background:var(--okbg);border:1px solid #BCE3C7;color:var(--ok);border-radius:14px;
     padding:14px 16px;margin:16px 0 0;font-size:14.5px}
   .ok b{display:block;margin-bottom:3px;font-family:var(--display)}
@@ -168,6 +172,8 @@
       <div id="grantorPerson">
       <div class="field"><label>ПІБ повністю <span class="req">*</span></label>
         <input type="text" id="grantorPib" placeholder="Іваненко Іван Іванович"></div>
+      <label class="byhand"><input type="checkbox" id="g_byhand"> Адресу впишу від руки (у документі — порожній рядок)</label>
+      <div id="grantorAddrWrap">
       <p class="addrlbl" style="margin-bottom:2px">Адреса реєстрації (місце проживання)</p>
       <p style="margin:0 0 8px"><button type="button" class="linkbtn" id="g_copy">= адреса як у реквізитах будинку</button></p>
       <div class="row">
@@ -203,11 +209,14 @@
       </div>
       <div class="field" style="max-width:200px"><label>Індекс</label>
         <input type="text" id="g_index" inputmode="numeric" placeholder="07302"></div>
+      </div><!-- /grantorAddrWrap -->
       </div><!-- /grantorPerson -->
     </fieldset>
 
     <fieldset id="passportSection">
       <legend>3. Документ, що посвідчує особу</legend>
+      <label class="byhand"><input type="checkbox" id="pass_byhand"> Паспортні дані впишу від руки (у документі — порожній рядок)</label>
+      <div id="passWrap">
       <div class="field"><label>Тип документа <span class="req">*</span></label>
         <div class="radios">
           <label><input type="radio" name="docKind" value="book" checked> Паспорт-книжечка</label>
@@ -234,12 +243,15 @@
         <div class="field"><label>УНЗР (13 цифр, РРРРММДД-ХХХХХ) <span class="req">*</span></label>
           <input type="text" id="idUnzr" placeholder="19900101-12345"></div>
       </div>
+      </div><!-- /passWrap -->
     </fieldset>
 
     <fieldset>
       <legend>4. Представник (повірена особа)</legend>
       <div class="field"><label>ПІБ повністю <span class="req">*</span></label>
         <input type="text" id="repPib" placeholder="Петренко Петро Петрович"></div>
+      <label class="byhand"><input type="checkbox" id="r_byhand"> Адресу впишу від руки (у документі — порожній рядок)</label>
+      <div id="repAddrWrap">
       <p class="addrlbl" style="margin-bottom:2px">Адреса проживання</p>
       <p style="margin:0 0 8px"><button type="button" class="linkbtn" id="r_copy">= адреса як у реквізитах будинку</button></p>
       <div class="row">
@@ -275,6 +287,7 @@
       </div>
       <div class="field" style="max-width:200px"><label>Індекс</label>
         <input type="text" id="r_index" inputmode="numeric" placeholder="07302"></div>
+      </div><!-- /repAddrWrap -->
     </fieldset>
 
     <fieldset>
@@ -33671,6 +33684,12 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
     });
   });
 
+  // "fill by hand" toggles — hide a block; its values become optional + blank line in the .docx
+  [["g_byhand","grantorAddrWrap"],["pass_byhand","passWrap"],["r_byhand","repAddrWrap"]].forEach(function(p){
+    var cb = document.getElementById(p[0]), wrap = document.getElementById(p[1]);
+    if(cb && wrap){ var upd = function(){ wrap.classList.toggle("hidden", cb.checked); }; cb.addEventListener("change", upd); upd(); }
+  });
+
   // date: default to today (year text is fixed "дві тисячі двадцять шостого")
   var MONTHS_GEN = ["січня","лютого","березня","квітня","травня","червня","липня","серпня","вересня","жовтня","листопада","грудня"];
   (function(){
@@ -33717,6 +33736,7 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
     clearMarks();
     var errs = [];
     var byId = function(id){ return document.getElementById(id); };
+    var BLANK = "_____________________________________________"; // hand-fill line
 
     // building
     need(byId("houseNo"),"Номер будинку",errs);
@@ -33741,11 +33761,17 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
       grantorPib = val("grantorPib");
       var gGet = function(k){ return val("g_"+k); };
       var gQ   = function(k){ return byId("g_"+k); };
-      needAddr("Адреса довірителя", gQ, errs);
-      grantorAddr = assembleAddr(gGet, true);
+      if(byId("g_byhand") && byId("g_byhand").checked){
+        grantorAddr = BLANK;
+      } else {
+        needAddr("Адреса довірителя", gQ, errs);
+        grantorAddr = assembleAddr(gGet, true);
+      }
 
       var docKind = document.querySelector('input[name="docKind"]:checked').value;
-      if(docKind==="book"){
+      if(byId("pass_byhand") && byId("pass_byhand").checked){
+        passport = BLANK;
+      } else if(docKind==="book"){
         var sn=need(byId("pbSerNum"),"Серія та номер паспорта",errs),
             ki=need(byId("pbIssuer"),"Ким виданий паспорт",errs),
             dt=need(byId("pbDate"),"Коли виданий паспорт",errs);
@@ -33764,8 +33790,13 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
     need(byId("repPib"),"ПІБ представника",errs);
     var rGet = function(k){ return val("r_"+k); };
     var rQ   = function(k){ return byId("r_"+k); };
-    needAddr("Адреса представника", rQ, errs);
-    var repAddr = assembleAddr(rGet, true);
+    var repAddr;
+    if(byId("r_byhand") && byId("r_byhand").checked){
+      repAddr = BLANK;
+    } else {
+      needAddr("Адреса представника", rQ, errs);
+      repAddr = assembleAddr(rGet, true);
+    }
 
     // objects
     var objects = [];
