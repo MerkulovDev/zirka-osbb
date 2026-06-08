@@ -353,6 +353,7 @@
       <select class="o-doctype">
         <option value="v1">Витяг з Державного реєстру речових прав (ДРРП)</option>
         <option value="v2">Нотаріальний документ (договір / свідоцтво)</option>
+        <option value="v4">Реєстраційний(і) номер(и) об'єкта нерухомого майна</option>
         <option value="v3">Інший документ</option>
       </select>
     </div>
@@ -387,6 +388,10 @@
         <div class="field"><label>№ в реєстрі <span class="req">*</span></label>
           <input type="text" class="v2-reg" placeholder="1234"></div>
       </div>
+    </div>
+    <div class="doc-v4 hidden">
+      <div class="field"><label>Реєстраційний(і) номер(и) об'єкта нерухомого майна <span class="req">*</span></label>
+        <input type="text" class="v4-reg" placeholder="123456789012"></div>
     </div>
     <div class="doc-v3 hidden">
       <div class="field"><label>Опис документа <span class="req">*</span></label>
@@ -33589,11 +33594,12 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
 
   function wireDocType(block){
     var sel = block.querySelector(".o-doctype");
-    var v1 = block.querySelector(".doc-v1"), v2 = block.querySelector(".doc-v2"), v3 = block.querySelector(".doc-v3");
+    var v1 = block.querySelector(".doc-v1"), v2 = block.querySelector(".doc-v2"), v3 = block.querySelector(".doc-v3"), v4 = block.querySelector(".doc-v4");
     function upd(){
       v1.classList.toggle("hidden", sel.value!=="v1");
       v2.classList.toggle("hidden", sel.value!=="v2");
       v3.classList.toggle("hidden", sel.value!=="v3");
+      v4.classList.toggle("hidden", sel.value!=="v4");
     }
     sel.addEventListener("change", upd); upd();
   }
@@ -33771,7 +33777,7 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
       var addr = assembleAddr(oGet, false);
 
       var dtype = b.querySelector(".o-doctype").value;
-      var docStr = "";
+      var docStr = "", docFull = false;
       if(dtype==="v1"){
         var x=need(b.querySelector(".v1-idx"),"Об'єкт "+idx+": індексний номер",errs),
             y=need(b.querySelector(".v1-date"),"Об'єкт "+idx+": дата витягу",errs),
@@ -33790,11 +33796,14 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
             ", "+kind+" нотаріусом "+b.querySelector(".v2-okrug").value.trim()+" "+
             b.querySelector(".v2-date").value.trim()+", зареєстрований в реєстрі за № "+
             b.querySelector(".v2-reg").value.trim()+".";
+      } else if(dtype==="v4"){
+        var rn=need(b.querySelector(".v4-reg"),"Об'єкт "+idx+": реєстраційний номер об'єкта нерухомого майна",errs);
+        if(rn){ docStr="Реєстраційний(і) номер(и) об'єкта нерухомого майна:  "+b.querySelector(".v4-reg").value.trim()+"."; docFull=true; }
       } else {
         var t=need(b.querySelector(".v3-text"),"Об'єкт "+idx+": опис документа",errs);
         if(t) docStr=b.querySelector(".v3-text").value.trim();
       }
-      objects.push({ type:type, num:b.querySelector(".o-num").value.trim(), addr:addr, docStr:docStr });
+      objects.push({ type:type, num:b.querySelector(".o-num").value.trim(), addr:addr, docStr:docStr, docFull:docFull });
     });
 
     if(errs.length) return { errs:errs };
@@ -33860,7 +33869,7 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
 
     d.objects.forEach(function(o){
       p.push(P(run(genitive(o.type,o.num)+", що знаходиться за адресою: "+o.addr+";",{bold:true}), {align:J, after:0}));
-      p.push(P(run("Документ про право власності на квартиру (приміщення): "+o.docStr,{bold:true}), {align:J}));
+      p.push(P(run((o.docFull ? "" : "Документ про право власності на квартиру (приміщення): ")+o.docStr,{bold:true}), {align:J}));
     });
 
     p.push(P(run(tov ? "Для цього представнику надається право від імені ТОВ:" : "Для цього представнику надається право від мого імені:",{bold:true}), {align:J}));
