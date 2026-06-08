@@ -121,7 +121,7 @@
       </div>
     </fieldset>
 
-    <fieldset>
+    <fieldset class="hidden">
       <legend>1. Реквізити будинку</legend>
       <div class="row">
         <div class="field w-sm"><label>Тип</label>
@@ -320,6 +320,7 @@
     </div>
     <div class="field" style="max-width:160px"><label>Номер <span class="req">*</span></label>
       <input type="text" class="o-num" placeholder="30"></div>
+    <div class="oa-addr hidden">
     <p class="addrlbl" style="margin-bottom:2px">Адреса об'єкта</p>
     <p style="margin:0 0 8px"><button type="button" class="linkbtn oa-copy">= адреса як у реквізитах будинку</button></p>
     <div class="row">
@@ -349,6 +350,7 @@
     </div>
     <div class="field" style="max-width:200px"><label>Індекс</label>
       <input type="text" class="oa-index" inputmode="numeric" placeholder="07302"></div>
+    </div>
     <div class="field"><label>Правовстановлюючий документ <span class="req">*</span></label>
       <select class="o-doctype">
         <option value="v1">Витяг з Державного реєстру речових прав (ДРРП)</option>
