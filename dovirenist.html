@@ -366,14 +366,14 @@
     </div>
     <div class="field"><label>Правовстановлюючий документ <span class="req">*</span></label>
       <select class="o-doctype">
+        <option value="v4" selected>Реєстраційний(і) номер(и) об'єкта нерухомого майна</option>
         <option value="v1">Витяг з Державного реєстру речових прав (ДРРП)</option>
         <option value="v2">Нотаріальний документ (договір / свідоцтво)</option>
-        <option value="v4">Реєстраційний(і) номер(и) об'єкта нерухомого майна</option>
         <option value="v3">Інший документ</option>
       </select>
     </div>
-    <div class="doc-v1">
-      <div class="field"><label>Індексний номер <span class="req">*</span></label>
+    <div class="doc-v1 hidden">
+      <div class="field"><label>Реєстраційний номер об'єкта нерухомого майна <span class="req">*</span></label>
         <input type="text" class="v1-idx" placeholder="123456789"></div>
       <div class="field"><label>Дата видачі <span class="req">*</span></label>
         <input type="text" class="v1-date" placeholder="10.06.2018"></div>
@@ -404,7 +404,7 @@
           <input type="text" class="v2-reg" placeholder="1234"></div>
       </div>
     </div>
-    <div class="doc-v4 hidden">
+    <div class="doc-v4">
       <div class="field"><label>Реєстраційний(і) номер(и) об'єкта нерухомого майна <span class="req">*</span></label>
         <input type="text" class="v4-reg" placeholder="123456789012"></div>
     </div>
@@ -33814,10 +33814,10 @@ while (n === a[++i] && n === a[++i] && n === a[++i] && n === a[++i] && n === a[+
       var dtype = b.querySelector(".o-doctype").value;
       var docStr = "", docFull = false;
       if(dtype==="v1"){
-        var x=need(b.querySelector(".v1-idx"),"Об'єкт "+idx+": індексний номер",errs),
+        var x=need(b.querySelector(".v1-idx"),"Об'єкт "+idx+": реєстраційний номер об'єкта нерухомого майна",errs),
             y=need(b.querySelector(".v1-date"),"Об'єкт "+idx+": дата витягу",errs),
             z=need(b.querySelector(".v1-issuer"),"Об'єкт "+idx+": ким виданий витяг",errs);
-        if(x&&y&&z) docStr="Витяг з Державного реєстру речових прав на нерухоме майно про реєстрацію права власності, індексний номер: "+
+        if(x&&y&&z) docStr="Витяг з Державного реєстру речових прав на нерухоме майно про реєстрацію права власності, реєстраційний номер об'єкта нерухомого майна: "+
             b.querySelector(".v1-idx").value.trim()+", виданий "+b.querySelector(".v1-date").value.trim()+
             " року "+b.querySelector(".v1-issuer").value.trim()+".";
       } else if(dtype==="v2"){
