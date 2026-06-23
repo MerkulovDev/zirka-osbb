@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Як проголосувати з-за кордону · ОСББ «Зірка Вишгорода»</title>
+<meta name="description" content="Перебуваєте за межами України? Проголосувати за створення ОСББ можна без приїзду й без українського номера телефону — у застосунку «ДАХ», електронним підписом онлайн або через довіреність." />
+
+<!-- favicon -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%233DA66E'/%3E%3Cpolygon points='12 4 14.6 9.3 20.5 10.1 16.2 14.2 17.2 20 12 17.2 6.8 20 7.8 14.2 3.5 10.1 9.4 9.3' fill='%23FBE3A6'/%3E%3C/svg%3E" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="uk_UA" />
+<meta property="og:site_name" content="ОСББ «Зірка Вишгорода»" />
+<meta property="og:url" content="https://zirka-vyshgoroda.pp.ua/zakordon.html" />
+<meta property="og:title" content="Як проголосувати з-за кордону" />
+<meta property="og:description" content="Без приїзду й без українського номера телефону — застосунок «ДАХ», електронний підпис онлайн або довіреність." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['Manrope', 'system-ui', 'sans-serif'],
+          body: ['Inter', 'system-ui', 'sans-serif'],
+        },
+        colors: {
+          cream:    '#F2F8F1',
+          sand:     '#E8F3E5',
+          mint:     '#DBEFDF',
+          ink:      '#1E2A22',
+          muted:    '#5E6F63',
+          green:    '#3DA66E',
+          greenDeep:'#2C8456',
+          leaf:     '#6CC08A',
+          honey:    '#F4C05B',
+          honeyDeep:'#E0A23C',
+          clay:     '#CF7A50',
+          clayDeep: '#B5613A',
+        },
+        borderRadius: { '4xl': '2rem', '5xl': '2.5rem' },
+        boxShadow: {
+          soft: '0 18px 50px -22px rgba(28,64,40,0.20)',
+          lift: '0 28px 70px -28px rgba(28,64,40,0.30)',
+          glow: '0 12px 40px -12px rgba(61,166,110,0.50)',
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background:#F2F8F1;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;
+    -webkit-touch-callout:none; -webkit-tap-highlight-color:transparent;
+  }
+
+  .blob { position:absolute; border-radius:9999px; filter:blur(70px); opacity:.5; z-index:0; pointer-events:none; }
+
+  .reveal { opacity:0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity:1; transform:none; }
+  .reveal[data-delay="1"]{ transition-delay:.08s; }
+  .reveal[data-delay="2"]{ transition-delay:.16s; }
+  .reveal[data-delay="3"]{ transition-delay:.24s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity:1; transform:none; transition:none; }
+    html { scroll-behavior:auto; }
+  }
+
+  .glass { background: rgba(242,248,241,.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+</style>
+</head>
+
+<body class="font-body text-ink antialiased">
+
+<header class="fixed top-0 inset-x-0 z-50">
+  <nav class="glass border-b border-white/50">
+    <div class="mx-auto max-w-6xl px-5 sm:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5 font-display font-extrabold text-ink">
+        <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-green to-leaf text-white shadow-glow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </span>
+        <span>Зірка&nbsp;Вишгорода</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium text-muted">
+        <a href="index.html#vote" class="hover:text-ink transition">Голосування</a>
+        <a href="zakordon.html" class="text-greenDeep font-semibold">З-за кордону</a>
+        <a href="index.html#registration" class="hover:text-ink transition">Що варто знати</a>
+        <a href="index.html#faq" class="hover:text-ink transition">Питання</a>
+        <a href="index.html#contacts" class="hover:text-ink transition">Контакти</a>
+      </div>
+
+      <a href="index.html" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-green text-white px-5 py-2.5 text-sm font-semibold hover:bg-greenDeep transition shadow-soft">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        На головну
+      </a>
+
+      <button id="navToggle" class="md:hidden grid place-items-center w-10 h-10 rounded-xl bg-white/70 text-ink" aria-label="Меню">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/50 px-5 pb-5 pt-2 space-y-1 text-sm font-medium">
+      <a href="index.html#vote" class="block py-2.5 text-muted">Голосування</a>
+      <a href="zakordon.html" class="block py-2.5 text-greenDeep font-semibold">З-за кордону</a>
+      <a href="index.html#registration" class="block py-2.5 text-muted">Що варто знати</a>
+      <a href="index.html#faq" class="block py-2.5 text-muted">Питання</a>
+      <a href="index.html#contacts" class="block py-2.5 text-muted">Контакти</a>
+      <a href="index.html" class="block mt-2 text-center rounded-full bg-green text-white py-3 font-semibold">На головну</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============== INTRO ============== -->
+<section class="relative pt-28 sm:pt-32 pb-12 sm:pb-16 bg-sand/70 scroll-mt-20 overflow-hidden">
+  <div class="blob w-[520px] h-[520px] -top-24 -left-24 bg-leaf/35"></div>
+  <div class="blob w-[420px] h-[420px] top-40 -right-24 bg-honey/25"></div>
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
+    <a href="index.html#vote" class="reveal inline-flex items-center gap-2 text-sm font-semibold text-muted hover:text-ink transition">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+      Усі способи голосування
+    </a>
+    <div class="reveal mt-5 flex items-center gap-3">
+      <span class="grid place-items-center w-12 h-12 rounded-2xl bg-white/70 shrink-0 text-2xl shadow-soft">&#127757;</span>
+      <span class="text-sm font-semibold uppercase tracking-wider text-green">Голосування з-за кордону</span>
+    </div>
+    <h1 class="reveal mt-4 font-display font-extrabold text-3xl sm:text-4xl tracking-tight">Ви за межами України? Проголосувати все одно можна</h1>
+    <p class="reveal mt-4 text-muted text-lg" data-delay="1">Не потрібно приїжджати, і навіть український номер телефону не обовʼязковий. Оберіть зручний спосіб — нижче пояснюємо кожен крок за кроком.</p>
+  </div>
+</section>
+
+<!-- ============== 3 WAYS ============== -->
+<section class="relative py-14 sm:py-20 overflow-hidden">
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8 space-y-6">
+
+    <!-- way 1 -->
+    <div class="reveal rounded-5xl bg-white border border-ink/5 shadow-soft p-7 sm:p-9 flex flex-col" data-delay="1">
+      <div class="flex items-start gap-4">
+        <span class="grid place-items-center w-11 h-11 rounded-2xl bg-green text-white font-display font-extrabold text-lg shrink-0 shadow-glow">1</span>
+        <div>
+          <div class="text-xs uppercase tracking-wide text-green font-semibold">Найпростіше</div>
+          <h2 class="font-display font-extrabold text-xl sm:text-2xl leading-tight">Через застосунок «ДАХ»</h2>
+        </div>
+      </div>
+      <p class="mt-4 text-muted leading-relaxed">Український номер телефону <strong class="text-ink font-semibold">не потрібен</strong> — у «ДАХ» можна увійти з номером будь-якої країни. Голосування підписується через «Дію», а увійти в «Дію» можна без українського номера — лише за <strong class="text-ink font-semibold">закордонним біометричним паспортом</strong>.</p>
+      <ol class="mt-4 space-y-2.5 text-ink/80 text-sm">
+        <li class="flex gap-2.5"><span class="grid place-items-center w-5 h-5 rounded-full bg-green/15 text-greenDeep text-xs font-bold shrink-0 mt-0.5">1</span><span>Установіть «ДАХ» і авторизуйтеся в «Дії» за закордонним біометричним паспортом</span></li>
+        <li class="flex gap-2.5"><span class="grid place-items-center w-5 h-5 rounded-full bg-green/15 text-greenDeep text-xs font-bold shrink-0 mt-0.5">2</span><span>Відкрийте «ДАХ» і знайдіть голосування свого будинку</span></li>
+        <li class="flex gap-2.5"><span class="grid place-items-center w-5 h-5 rounded-full bg-green/15 text-greenDeep text-xs font-bold shrink-0 mt-0.5">3</span><span>Проголосуйте з кожного питання — підпис накладається через «Дію»</span></li>
+      </ol>
+      <div class="mt-6 flex flex-wrap gap-2.5">
+        <a href="https://play.google.com/store/apps/details?id=com.dah.data&pcampaignid=web_share" target="_blank" rel="noopener" aria-label="Завантажити в Google Play" class="inline-flex items-center gap-2.5 rounded-2xl bg-ink text-white px-4 py-2.5 hover:-translate-y-0.5 transition shadow-soft"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 2.5v19a1 1 0 0 0 1.5.87l16.5-9.5a1 1 0 0 0 0-1.74L5.5 1.63A1 1 0 0 0 4 2.5Z"/></svg><span class="text-left leading-none"><span class="block text-[10px] text-white/65 mb-0.5">Завантажити в</span><span class="block font-display font-bold text-sm">Google Play</span></span></a>
+        <a href="https://apps.apple.com/ua/app/%D0%B4%D0%B0%D1%85/id1444141366?l=uk" target="_blank" rel="noopener" aria-label="Завантажити в App Store" class="inline-flex items-center gap-2.5 rounded-2xl bg-ink text-white px-4 py-2.5 hover:-translate-y-0.5 transition shadow-soft"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 13.2c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.7 1.1 8.9.7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.5-.7 2.9-.7 1.3 0 1.7.7 2.9.7 1.2 0 2-1.1 2.7-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.3-.9-2.3-3.5ZM15.3 6.3c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.3-.6.7-1.1 1.7-1 2.7 1 .1 2-.5 2.7-1.1Z"/></svg><span class="text-left leading-none"><span class="block text-[10px] text-white/65 mb-0.5">Завантажити в</span><span class="block font-display font-bold text-sm">App Store</span></span></a>
+        <a href="https://appgallery.huawei.com/app/C107040963?sharePrepath=ag" target="_blank" rel="noopener" aria-label="Доступно в AppGallery" class="inline-flex items-center gap-2.5 rounded-2xl bg-ink text-white px-4 py-2.5 hover:-translate-y-0.5 transition shadow-soft"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg><span class="text-left leading-none"><span class="block text-[10px] text-white/65 mb-0.5">Доступно в</span><span class="block font-display font-bold text-sm">AppGallery</span></span></a>
+      </div>
+      <a href="https://www.youtube.com/watch?v=3ikx_ot7Dpw" target="_blank" rel="noopener" class="mt-5 inline-flex items-center gap-2.5 text-greenDeep font-semibold hover:gap-3 transition-all">
+        <span class="grid place-items-center w-8 h-8 rounded-xl bg-[#FF0000] text-white shrink-0"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        Відео: як увійти в «Дію» за закордонним паспортом (без номера)
+      </a>
+    </div>
+
+    <!-- way 2 -->
+    <div class="reveal rounded-5xl bg-white border border-ink/5 shadow-soft p-7 sm:p-9 flex flex-col" data-delay="1">
+      <div class="flex items-start gap-4">
+        <span class="grid place-items-center w-11 h-11 rounded-2xl bg-honey text-white font-display font-extrabold text-lg shrink-0 shadow-glow">2</span>
+        <div>
+          <div class="text-xs uppercase tracking-wide text-honeyDeep font-semibold">Без застосунку</div>
+          <h2 class="font-display font-extrabold text-xl sm:text-2xl leading-tight">Підписати документ онлайн</h2>
+        </div>
+      </div>
+      <p class="mt-4 text-muted leading-relaxed">Ми сформуємо ваш документ для голосування й надішлемо <strong class="text-ink font-semibold">посилання</strong>. Вам залишиться лише підписати його будь-яким зручним способом електронного підпису — <a href="#sposoby" class="text-greenDeep font-semibold underline underline-offset-2">з переліку нижче</a>.</p>
+      <ol class="mt-4 space-y-2.5 text-ink/80 text-sm">
+        <li class="flex gap-2.5"><span class="grid place-items-center w-5 h-5 rounded-full bg-honey/25 text-honeyDeep text-xs font-bold shrink-0 mt-0.5">1</span><span>Звертаєтеся до ініціативної групи — ми готуємо ваш документ</span></li>
+        <li class="flex gap-2.5"><span class="grid place-items-center w-5 h-5 rounded-full bg-honey/25 text-honeyDeep text-xs font-bold shrink-0 mt-0.5">2</span><span>Отримуєте посилання на підпис</span></li>
+        <li class="flex gap-2.5"><span class="grid place-items-center w-5 h-5 rounded-full bg-honey/25 text-honeyDeep text-xs font-bold shrink-0 mt-0.5">3</span><span>Підписуєте будь-яким способом — і ваш голос враховано</span></li>
+      </ol>
+    </div>
+
+    <!-- way 3 -->
+    <div class="reveal rounded-5xl bg-white border border-ink/5 shadow-soft p-7 sm:p-9 flex flex-col" data-delay="1">
+      <div class="flex items-start gap-4">
+        <span class="grid place-items-center w-11 h-11 rounded-2xl bg-greenDeep text-white font-display font-extrabold text-lg shrink-0 shadow-glow">3</span>
+        <div>
+          <div class="text-xs uppercase tracking-wide text-greenDeep font-semibold">Голосує довірена особа</div>
+          <h2 class="font-display font-extrabold text-xl sm:text-2xl leading-tight">Через довіреність</h2>
+        </div>
+      </div>
+      <p class="mt-4 text-muted leading-relaxed">Якщо так зручніше — ми підготуємо <strong class="text-ink font-semibold">довіреність</strong> і надішлемо посилання на підпис. Ви підписуєте її онлайн (тими самими способами, що й у способі 2), а проголосує за вас <strong class="text-ink font-semibold">довірена особа в Україні</strong>.</p>
+      <ol class="mt-4 space-y-2.5 text-ink/80 text-sm">
+        <li class="flex gap-2.5"><span class="grid place-items-center w-5 h-5 rounded-full bg-green/15 text-greenDeep text-xs font-bold shrink-0 mt-0.5">1</span><span>Ми готуємо довіреність і надсилаємо посилання на підпис</span></li>
+        <li class="flex gap-2.5"><span class="grid place-items-center w-5 h-5 rounded-full bg-green/15 text-greenDeep text-xs font-bold shrink-0 mt-0.5">2</span><span>Ви підписуєте її онлайн електронним підписом</span></li>
+        <li class="flex gap-2.5"><span class="grid place-items-center w-5 h-5 rounded-full bg-green/15 text-greenDeep text-xs font-bold shrink-0 mt-0.5">3</span><span>Довірена особа голосує за цією довіреністю на місці</span></li>
+      </ol>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== SIGNING METHODS ============== -->
+<section id="sposoby" class="relative py-14 sm:py-20 bg-sand/70 scroll-mt-20 overflow-hidden">
+  <div class="blob w-[420px] h-[420px] -left-24 top-20 bg-leaf/30"></div>
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
+    <div class="reveal">
+      <span class="text-sm font-semibold uppercase tracking-wider text-green">Для способів 2 і 3</span>
+      <h2 class="mt-3 font-display font-extrabold text-2xl sm:text-3xl tracking-tight">Способи електронного підпису</h2>
+      <p class="mt-3 text-muted text-lg">Підійде будь-який — оберіть той, що у вас уже є. Усі вони рівноцінні.</p>
+    </div>
+
+    <div class="reveal mt-8 grid sm:grid-cols-2 gap-4" data-delay="1">
+      <!-- Дія.Підпис -->
+      <div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 sm:p-6 flex items-start gap-4">
+        <span class="grid place-items-center w-12 h-12 rounded-2xl bg-ink text-white font-display font-extrabold text-sm shrink-0">Дія</span>
+        <div>
+          <h3 class="font-display font-bold text-base leading-tight">Дія.Підпис</h3>
+          <p class="mt-1 text-sm text-ink/70 leading-relaxed">Кваліфікований підпис через застосунок «Дія».</p>
+        </div>
+      </div>
+      <!-- КЕП -->
+      <div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 sm:p-6 flex items-start gap-4">
+        <span class="grid place-items-center w-12 h-12 rounded-2xl bg-honey/20 text-honeyDeep shrink-0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="16" r="1"/></svg></span>
+        <div>
+          <h3 class="font-display font-bold text-base leading-tight">Ключем ЕЦП (КЕП)</h3>
+          <p class="mt-1 text-sm text-ink/70 leading-relaxed">Традиційний електронний підпис із файлом ключа.</p>
+        </div>
+      </div>
+      <!-- SmartID -->
+      <div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 sm:p-6 flex items-start gap-4">
+        <span class="grid place-items-center w-12 h-12 rounded-2xl bg-ink text-white ring-[3px] ring-green ring-inset font-display font-extrabold text-sm shrink-0">ID</span>
+        <div>
+          <h3 class="font-display font-bold text-base leading-tight">SmartID</h3>
+          <p class="mt-1 text-sm text-ink/70 leading-relaxed">Кваліфікований підпис через сервіс SmartID.</p>
+        </div>
+      </div>
+      <!-- monoКЕП -->
+      <div class="rounded-3xl bg-white border border-ink/5 shadow-soft p-5 sm:p-6 flex items-start gap-4">
+        <span class="grid place-items-center w-12 h-12 rounded-2xl bg-ink text-white font-display font-bold text-[11px] shrink-0">mono</span>
+        <div>
+          <h3 class="font-display font-bold text-base leading-tight">monoКЕП</h3>
+          <p class="mt-1 text-sm text-ink/70 leading-relaxed">Кваліфікований підпис для клієнтів Monobank.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="reveal mt-5 text-sm text-muted" data-delay="2">Посилання на підпис ми надсилаємо індивідуально — напишіть нам, і ми сформуємо для вас документ або довіреність.</p>
+  </div>
+</section>
+
+<!-- ============== CTA ============== -->
+<section class="relative py-16 sm:py-20 overflow-hidden">
+  <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
+    <div class="reveal rounded-5xl bg-gradient-to-br from-green to-greenDeep text-white p-8 sm:p-12 shadow-glow text-center">
+      <h2 class="font-display font-extrabold text-2xl sm:text-3xl tracking-tight">Готові проголосувати з-за кордону?</h2>
+      <p class="mt-4 text-white/85 text-lg max-w-xl mx-auto">Напишіть ініціативній групі — ми підкажемо найзручніший спосіб і за потреби сформуємо документ чи довіреність та надішлемо посилання на підпис.</p>
+      <div class="mt-8 flex flex-wrap gap-3 justify-center">
+        <a href="index.html#contacts" class="inline-flex items-center gap-2 rounded-full bg-white text-greenDeep px-7 py-3.5 font-semibold shadow-soft hover:-translate-y-0.5 transition">Звʼязатися з нами</a>
+        <a href="index.html#vote" class="inline-flex items-center gap-2 rounded-full bg-white/15 text-white px-7 py-3.5 font-semibold border border-white/30 hover:bg-white/25 transition">Усі способи голосування</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t border-ink/8">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 py-12 grid sm:grid-cols-[1.5fr_1fr_1fr] gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 font-display font-extrabold text-ink">
+        <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-green to-leaf text-white shadow-glow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </span>
+        Зірка Вишгорода
+      </div>
+      <p class="mt-4 text-muted max-w-xs">Спільний дім — спільні рішення. Створюємо ОСББ нашого будинку разом.</p>
+      <p class="mt-3 text-muted text-sm">вул. Шолуденко 18А, м. Вишгород</p>
+      <p class="mt-1 text-muted text-sm break-all">osbb.zirka.vyshgoroda@gmail.com · +38 093 758 81 46</p>
+    </div>
+    <div>
+      <div class="font-display font-bold mb-3">Розділи</div>
+      <ul class="space-y-2 text-muted text-sm">
+        <li><a href="index.html#vote" class="hover:text-ink transition">Голосування</a></li>
+        <li><a href="zakordon.html" class="hover:text-ink transition">З-за кордону</a></li>
+        <li><a href="index.html#faq" class="hover:text-ink transition">Поширені питання</a></li>
+        <li><a href="index.html" class="hover:text-ink transition">На головну</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="font-display font-bold mb-3">Зв'язок</div>
+      <ul class="space-y-2 text-muted text-sm">
+        <li><a href="viber://chat?number=%2B380937588146" class="hover:text-ink transition">Написати у Viber</a></li>
+        <li><a href="tel:+380937588146" class="hover:text-ink transition">+38 093 758 81 46</a></li>
+        <li><a href="mailto:osbb.zirka.vyshgoroda@gmail.com" class="hover:text-ink transition break-all">osbb.zirka.vyshgoroda@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-ink/8">
+    <div class="mx-auto max-w-6xl px-5 sm:px-8 py-5 text-sm text-muted flex flex-col sm:flex-row gap-2 justify-between">
+      <span>© 2026 ОСББ «Зірка Вишгорода»</span>
+      <span>Зроблено з турботою про сусідів 🌱</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // symbolic copy/inspect protection
+  ['contextmenu','copy','cut','selectstart','dragstart'].forEach(function(ev){
+    document.addEventListener(ev, function(e){ e.preventDefault(); });
+  });
+  document.addEventListener('keydown', function(e){
+    var k = e.key;
+    if (k === 'F12') { e.preventDefault(); return; }
+    if ((e.ctrlKey || e.metaKey) && ['c','x','s','u','p'].indexOf(k.toLowerCase()) !== -1) { e.preventDefault(); return; }
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && ['i','j','c'].indexOf(k.toLowerCase()) !== -1) { e.preventDefault(); }
+  });
+
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileMenu');
+  toggle?.addEventListener('click', () => menu.classList.toggle('hidden'));
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+</script>
+  <!-- GoatCounter — privacy-friendly, no cookies -->
+  <script data-goatcounter="https://merkulovdev.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
